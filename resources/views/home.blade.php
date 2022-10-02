@@ -18,7 +18,12 @@
         </div>
     </nav>
     <div class="container">
-        <h1>Welcome to Homepage</h1>
+        <h1>Welcome to Homepage<br>
+          Md {{$name}}<br>
+          {{$id}}<br>
+          {{$dept}}<br>
+        </h1>
+
     </div>
   </body>
 </html>

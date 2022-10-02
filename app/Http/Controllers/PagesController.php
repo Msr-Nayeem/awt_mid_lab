@@ -19,7 +19,14 @@ class PagesController extends Controller
     }
     
     public function home(){
-        return view('home');
+        $name="nayeem";
+        $id="18-38037-2";
+        $dept="cse";
+        return view('home',[
+            "name"=>$name,
+            "id"=>$id,
+            "dept"=>$dept
+        ]);
     }
     public function contact(){
         return view('contact');
