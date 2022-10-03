@@ -1,3 +1,4 @@
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -20,11 +21,11 @@
     <div class="container">
     <h1>Our Team</h1>
     An overview of the founding team and core contributors
-        <ul>
-            <li>Msr Nayeem</li>
-            <li>Member 2</li>
-            <li>Member 3</li>
-        </ul>
+    <ol>
+    @foreach($teams as $member)
+    <li>Name : {{$member->namee}} <br>address : {{$member->address}}</li>
+    @endforeach
+</ol>
     </div>
   </body>
 </html>

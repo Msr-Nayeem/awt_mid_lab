@@ -4,6 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+class ourteam{
+    var $namee;
+    var $address;
+    function __construct($name,$address)
+    {
+        $this->namee=$name; 
+        $this->address=$address;       
+    }
+}
+
 class PagesController extends Controller
 {
     
@@ -38,9 +48,15 @@ class PagesController extends Controller
         return view('service')->with('services', $Services);
     }
     public function about(){
+
         return view('about');
     }
     public function ourteam(){
-        return view('ourteam');
+        $tm1= new ourteam("nayeem","dinajpur");
+        $tm2= new ourteam("msr", "dhaka");
+        $tm3= new ourteam("shahidur", "dinajpur");
+        $teams= array($tm1, $tm2, $tm3);
+        return view('ourteam')
+        ->with('teams', $teams);
     }
 }
