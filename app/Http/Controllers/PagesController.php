@@ -29,7 +29,9 @@ class PagesController extends Controller
         ]);
     }
     public function contact(){
-        return view('contact');
+        $info = ["name"=>"nayeem", "Phone no"=>"+880177*******", "email"=>"msrn@gmail.com", "address"=>"dhaka"];
+        return view('contact')
+        ->with("info", $info);
     }
     public function service(){
         $Services = array("Web application", "Desktop application", "Portfolio", "Financial application");

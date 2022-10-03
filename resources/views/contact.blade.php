@@ -18,8 +18,9 @@
         </div>
     </nav>
     <div class="container">
-        email: msr@gmail.com
-        contact no: +88017*****
+       @foreach($info as $info=>$details)
+       {{$info}}: {{$details}} <br>
+       @endforeach
     </div>
   </body>
 </html>
