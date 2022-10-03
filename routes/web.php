@@ -27,3 +27,6 @@ Route::get('/contact',[PagesController::class, 'contact'])->name('contact');
 Route::get('/service',[PagesController::class, 'service'])->name('service');
 Route::get('/about',[PagesController::class, 'about'])->name('about');
 Route::get('/ourteam',[PagesController::class, 'ourteam'])->name('ourteam');
+
+
+Route::get('/basichome',[PagesController::class, 'basicHome'])->name('basicHome');

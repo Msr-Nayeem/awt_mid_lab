@@ -59,4 +59,8 @@ class PagesController extends Controller
         return view('ourteam')
         ->with('teams', $teams);
     }
+
+    public function basicHome(){
+        return view('basicHome');
+    }
 }
