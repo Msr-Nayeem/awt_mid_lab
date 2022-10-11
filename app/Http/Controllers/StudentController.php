@@ -11,11 +11,25 @@ class StudentController extends Controller
     }
     public function createStudentSubmitted(Request $request){
        // $name = $request->name;
+        //return $request;
+
+        $validate = $request->validate([
+            "name"=>"required|min:5|max:20",
+            "id"=>"required",
+            'dob'=>'required',
+            'email'=>'email',
+            'phone'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/'
+        ],
+        [
+            'name.required'=>"name here",
+            'dob.required'=>"Select date of birth",
+            'phone.required'=>"Phone Number"
+            
+        ]
         
+        );
+
         return $request;
-
-
-        //return view('pages.student.createStudent');
     }
 
 
