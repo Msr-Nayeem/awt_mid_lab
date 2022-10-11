@@ -30,3 +30,14 @@ Route::get('/ourteam',[PagesController::class, 'ourteam'])->name('ourteam');
 
 
 Route::get('/basichome',[PagesController::class, 'basicHome'])->name('basicHome');
+
+
+// FROM URL
+Route::get('/user/{id}', function($id) {
+    return "<b>Passed : ".$id."<br>";
+});
+
+
+
+
+?>
