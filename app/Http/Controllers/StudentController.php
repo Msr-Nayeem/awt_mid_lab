@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Student;
 
 class StudentController extends Controller
 {
@@ -34,7 +35,7 @@ class StudentController extends Controller
 
 
     public function studentList(){
-        $student = array();
+        /* $student = array();
         for($i=1; $i<=10; $i++){
             $student = array(
                 "name"=>"Student ".($i),
@@ -42,8 +43,9 @@ class StudentController extends Controller
                 "dob"=>"2000-".($i)."-01"
             );
             $students[] = (object)$student;
-        }
-        return view('pages.student.list')->with('students', $students);
+        } */
+        $student = Student::all();
+        return view('pages.student.list')->with('students', $student);
     }
 
 
