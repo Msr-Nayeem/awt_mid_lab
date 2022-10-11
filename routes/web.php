@@ -40,5 +40,9 @@ Route::get('/user/{id}', function($id) {
 
 //Student
 Route::get('/studentList',[StudentController::class, 'studentList'])->name('studentList');
+
 Route::get('/createStudent',[StudentController::class, 'createStudent'])->name('createStudent');
 Route::post('/createStudent',[StudentController::class, 'createStudentSubmitted'])->name('createStudent');
+
+Route::get('/studentEdit/{id}',[StudentController::class, 'studentEdit'])->name('studentEdit');
+Route::post('/studentEdit',[StudentController::class, 'studentEditSubmitted'])->name('studentEdit');
