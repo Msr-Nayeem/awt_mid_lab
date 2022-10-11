@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,9 +33,10 @@ Route::get('/ourteam',[PagesController::class, 'ourteam'])->name('ourteam');
 Route::get('/basichome',[PagesController::class, 'basicHome'])->name('basicHome');
 
 
-
+//value pass by url
 Route::get('/user/{id}', function($id) {
     return "<b>Passed : ".$id."<br>";
 });
 
-
+//Student
+Route::get('/studentList',[StudentController::class, 'studentList'])->name('studentList');

@@ -8,11 +8,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
   </head>
   <body class="p-3 m-0 border-0 bd-example">
+   @include('inc.topnav')
     <div class="container">
-     @yield('topnav')
+      @yield('content')
     </div>
-
-    <div>This is basic home page using layouts</div>
-
   </body>
 </html>
