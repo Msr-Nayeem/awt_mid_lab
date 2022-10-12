@@ -2,7 +2,7 @@
   <head>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Home</title>
+    <title>Team</title>
    
   </head>
   <body class="p-3 m-0 border-0 bd-example">
