@@ -20,3 +20,4 @@ Route::get('/', function () {
 
 Route::get('/',[PagesController::class, 'home'])->name('home');
 Route::get('/service',[PagesController::class, 'service'])->name('service');
+Route::get('/team',[PagesController::class, 'team'])->name('team');
