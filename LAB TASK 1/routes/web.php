@@ -16,4 +16,7 @@ use App\Http\Controllers\PagesController;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
+
+Route::get('/',[PagesController::class, 'home'])->name('home');
+Route::get('/service',[PagesController::class, 'service'])->name('service');
