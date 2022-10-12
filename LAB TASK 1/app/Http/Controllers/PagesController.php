@@ -10,7 +10,9 @@ class PagesController extends Controller
         return view('home');
     }
     public function service(){
-        return view('service');
+        $list = array("Web app develepment", "Desktop app development", "Enterprise application", "Mobile app develpoment");
+
+        return view('service')->with('list', $list);
     }
     public function team(){
         return view('team');
