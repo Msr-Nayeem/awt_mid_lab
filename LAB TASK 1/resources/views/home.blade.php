@@ -10,8 +10,9 @@
         <div class="container-fluid justify-content-start">
         <a class="btn btn-outline-success me-2" type="button" href="{{route('home')}}">Home</a>
         <a class="btn btn-outline-success me-2" type="button" href="{{route('service')}}">Service</a>
-        <a class="btn btn-outline-success me-2" type="button" href="{{route('team')}}">Team</a>
-        <a class="btn btn-outline-success me-2" type="button" href="{{route('about')}}">About</a>
+        <a class="btn btn-outline-success me-2" type="button" href="{{route('team')}}">Our Team</a>
+        <a class="btn btn-outline-success me-2" type="button" href="{{route('contact')}}">Contact US</a>
+        <a class="btn btn-outline-success me-2" type="button" href="{{route('about')}}">About Us</a>
         </div>
     </nav>
     <div class="container">

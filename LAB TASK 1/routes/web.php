@@ -22,3 +22,4 @@ Route::get('/',[PagesController::class, 'home'])->name('home');
 Route::get('/service',[PagesController::class, 'service'])->name('service');
 Route::get('/team',[PagesController::class, 'team'])->name('team');
 Route::get('/about',[PagesController::class, 'about'])->name('about');
+Route::get('/contact',[PagesController::class, 'contact'])->name('contact');
