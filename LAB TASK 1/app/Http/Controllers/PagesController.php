@@ -11,11 +11,15 @@ class PagesController extends Controller
     }
     public function service(){
         $list = array("Web app develepment", "Desktop app development", "Enterprise application", "Mobile app develpoment");
-
         return view('service')->with('list', $list);
     }
     public function team(){
-        return view('team');
+        $member = array(
+            'web app'=>"Msr Nayeem",
+            'desktop app'=>"shahidur",
+            'mobile app'=>"rahman"
+        );
+        return view('team')->with('member', $member);
     }
     public function about(){
         return view('about');
