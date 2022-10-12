@@ -93,6 +93,15 @@ class StudentController extends Controller
          $student->save(); 
 
          return redirect()->route('studentList');
- 
-     }
+        }
+         // EDIT STUDENT DONE
+
+        //Delete Student
+        public function studentDelete(Request $request){
+            $student = Student::where('id', $request->id)->first();
+            $student->delete();
+
+            return redirect()->route('studentList');
+        }
+     
 }

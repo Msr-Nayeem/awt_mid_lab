@@ -18,8 +18,8 @@
             <td>{{$student->email}}</td>
             <td>{{$student->phone}}</td>
             <td>{{$student->dob}}</td>
-            <td><a href="/studentEdit/{{$student->id}}">Details</a></td> 
-            <td>none</td>
+            <td><a href="/studentEdit/{{$student->id}}">Details</a></td>
+            <td><a href="/studentDelete/{{$student->id}}">Delete</a></td>
         </tr>
         @endforeach
     </table>

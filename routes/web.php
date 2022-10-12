@@ -46,3 +46,5 @@ Route::post('/createStudent',[StudentController::class, 'createStudentSubmitted'
 
 Route::get('/studentEdit/{id}',[StudentController::class, 'studentEdit'])->name('studentEdit');
 Route::post('/studentEdit',[StudentController::class, 'studentEditSubmitted'])->name('studentEdit');
+
+Route::get('/studentDelete/{id}',[StudentController::class, 'studentDelete'])->name('studentDelete');
