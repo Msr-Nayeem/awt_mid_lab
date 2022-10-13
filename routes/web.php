@@ -39,6 +39,7 @@ Route::get('/user/{id}', function($id) {
 });
 
 //Student
+Route::get('/studentHome',[StudentController::class, 'studentHome'])->name('studentHome');
 Route::get('/studentList',[StudentController::class, 'studentList'])->name('studentList');
 
 Route::get('/createStudent',[StudentController::class, 'createStudent'])->name('createStudent');

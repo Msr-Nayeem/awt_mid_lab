@@ -7,6 +7,9 @@ use App\Models\Student;
 
 class StudentController extends Controller
 {
+    public function studentHome(){
+        return view('pages.student.studentHome');
+    }
     public function studentLogin(){
         return view('pages.student.studentLogin');
     }
@@ -16,11 +19,11 @@ class StudentController extends Controller
         ->first();
         if($student){
             $request->session()->put('user', $student->name);
+            return redirect()->route('studentHome');
         }
         else{
              return redirect()->back()->withErrors(['User not found']);
             
-            // return redirect()->back();
         }
     }
     // ADD STUDENT
