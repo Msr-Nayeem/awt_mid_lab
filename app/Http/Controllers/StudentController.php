@@ -26,6 +26,12 @@ class StudentController extends Controller
             
         }
     }
+
+    public function studentLogout(){
+        session()->forget("user");
+        return view('pages.student.studentLogin');
+    }
+
     // ADD STUDENT
     public function createStudent(){
         return view('pages.student.createStudent');

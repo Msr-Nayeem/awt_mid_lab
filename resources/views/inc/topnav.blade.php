@@ -4,5 +4,6 @@
             <a class="btn btn-outline-success me-2" type="button" href="{{route('studentList')}}">Student List</a>
             <a class="btn btn-outline-success me-2" type="button" href="{{route('createStudent')}}">Add student</a>
             <a class="btn btn-outline-success me-2" type="button" href="{{route('studentLogin')}}">Login</a>
+            <a class="btn btn-outline-success me-2" type="button" href="{{route('studentLogout')}}">Log Out</a>
         </div>
 </nav>

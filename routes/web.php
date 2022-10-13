@@ -39,7 +39,7 @@ Route::get('/user/{id}', function($id) {
 });
 
 //Student
-Route::get('/studentHome',[StudentController::class, 'studentHome'])->name('studentHome');
+Route::get('/studentHome',[StudentController::class, 'studentHome'])->name('studentHome')->middleware('checkLogin');
 Route::get('/studentList',[StudentController::class, 'studentList'])->name('studentList');
 
 Route::get('/createStudent',[StudentController::class, 'createStudent'])->name('createStudent');
@@ -49,5 +49,9 @@ Route::get('/studentEdit/{id}',[StudentController::class, 'studentEdit'])->name(
 Route::post('/studentEdit',[StudentController::class, 'studentEditSubmitted'])->name('studentEdit');
 
 Route::get('/studentDelete/{id}',[StudentController::class, 'studentDelete'])->name('studentDelete');
+
 Route::get('/studentLogin',[StudentController::class, 'studentLogin'])->name('studentLogin');
 Route::post('/studentLogin',[StudentController::class, 'studentLoginCheck'])->name('studentLogin');
+
+
+Route::get('/studentLogout',[StudentController::class, 'studentLogout'])->name('studentLogout');
