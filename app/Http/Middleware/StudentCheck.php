@@ -20,7 +20,7 @@ class StudentCheck
             return $next($request);
         }
         else{
-            return redirect()->route('studentLogin')->withErrors(['login must']);
+            return redirect()->route('studentLogin')->withErrors(['login must !']);
         }
         
     }

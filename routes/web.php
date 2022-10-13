@@ -42,13 +42,13 @@ Route::get('/user/{id}', function($id) {
 Route::get('/studentHome',[StudentController::class, 'studentHome'])->name('studentHome')->middleware('checkLogin');
 Route::get('/studentList',[StudentController::class, 'studentList'])->name('studentList');
 
-Route::get('/createStudent',[StudentController::class, 'createStudent'])->name('createStudent');
+Route::get('/createStudent',[StudentController::class, 'createStudent'])->name('createStudent')->middleware('checkLogin');
 Route::post('/createStudent',[StudentController::class, 'createStudentSubmitted'])->name('createStudent');
 
-Route::get('/studentEdit/{id}',[StudentController::class, 'studentEdit'])->name('studentEdit');
+Route::get('/studentEdit/{id}',[StudentController::class, 'studentEdit'])->name('studentEdit')->middleware('checkLogin');
 Route::post('/studentEdit',[StudentController::class, 'studentEditSubmitted'])->name('studentEdit');
 
-Route::get('/studentDelete/{id}',[StudentController::class, 'studentDelete'])->name('studentDelete');
+Route::get('/studentDelete/{id}',[StudentController::class, 'studentDelete'])->name('studentDelete')->middleware('checkLogin');
 
 Route::get('/studentLogin',[StudentController::class, 'studentLogin'])->name('studentLogin');
 Route::post('/studentLogin',[StudentController::class, 'studentLoginCheck'])->name('studentLogin');
