@@ -7,6 +7,22 @@ use App\Models\Student;
 
 class StudentController extends Controller
 {
+    public function studentLogin(){
+        return view('pages.student.studentLogin');
+    }
+    public function studentLoginCheck(Request $request){
+        $student = Student::where('email', $request->email)
+        ->where('password', $request->password)
+        ->first();
+        if($student){
+            $request->session()->put('user', $student->name);
+        }
+        else{
+             return redirect()->back()->withErrors(['User not found']);
+            
+            // return redirect()->back();
+        }
+    }
     // ADD STUDENT
     public function createStudent(){
         return view('pages.student.createStudent');
@@ -20,12 +36,14 @@ class StudentController extends Controller
             "student_id"=>"required",
             'dob'=>'required',
             'email'=>'email',
+            'password'=>'required',
             'phone'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/'
         ],
         [
             'name.required'=>"name here",
             'dob.required'=>"Select date of birth",
-            'phone.required'=>"Phone Number"
+            'phone.required'=>"Phone Number",
+            'password.required'=>"Password must"
             
         ]
         
@@ -35,6 +53,7 @@ class StudentController extends Controller
         $student->name = $request->name;
         $student->student_id = $request->student_id;
         $student->email = $request->email;
+        $student->password = $request->password;
         $student->dob = $request->dob;
         $student->phone = $request->phone;
         $student->save();
@@ -103,5 +122,9 @@ class StudentController extends Controller
 
             return redirect()->route('studentList');
         }
+       
+
+    
+    
      
 }

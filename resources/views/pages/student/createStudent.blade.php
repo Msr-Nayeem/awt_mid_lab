@@ -2,7 +2,7 @@
 
 @section('content')
     <h3>Fill student information</h3>
-    <form action="{{route('createStudent')}}" class="form-group" method="post">
+    <form action="{{route('createStudent')}}" class="form-group" method="post" autocomplete="off">
         {{csrf_field()}}
 
         <label for="">Name</label><br>
@@ -21,6 +21,12 @@
         <label for="">Email</label><br>
         <input type="text" name="email" class="form-control"><br>
         @error('email')
+            <span class="text-danger">{{$message}}</span><br>
+        @enderror
+
+        <label for="">Password</label><br>
+        <input type="password" name="password" class="form-control"><br>
+        @error('password')
             <span class="text-danger">{{$message}}</span><br>
         @enderror
 
