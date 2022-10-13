@@ -3,10 +3,6 @@
             <a class="btn btn-outline-success me-2" type="button" href="{{route('studentHome')}}">Home</a>
             <a class="btn btn-outline-success me-2" type="button" href="{{route('studentList')}}">Student List</a>
             <a class="btn btn-outline-success me-2" type="button" href="{{route('createStudent')}}">Add student</a>
-
-            @if(session()->missing('user'))
-            <a class="btn btn-outline-success me-2" type="button" href="{{route('studentLogin')}}">Login</a>
-            @endif
             @if(session()->has('user'))
             <a class="btn btn-outline-success me-2" type="button" href="{{route('studentLogout')}}">Log Out</a>
             @endif
