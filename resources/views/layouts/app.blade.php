@@ -5,6 +5,11 @@
     <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
     <title>Student</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+      th{
+        text-align: center;
+      }
+      </style>
   </head>
   <body class="p-3 m-0 border-0 bd-example">
    @include('inc.topnav')
