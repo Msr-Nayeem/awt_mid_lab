@@ -7,6 +7,7 @@ use App\Models\Student;
 
 class StudentController extends Controller
 {
+    
     public function studentHome(){
         return view('pages.student.studentHome');
     }
@@ -46,13 +47,14 @@ class StudentController extends Controller
             'dob'=>'required',
             'email'=>'email',
             'password'=>'required',
-            'phone'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/'
+            'phone'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/',
+            'address'=>'required'
+            
         ],
         [
-            'name.required'=>"name here",
             'dob.required'=>"Select date of birth",
-            'phone.required'=>"Phone Number",
-            'password.required'=>"Password must"
+            'phone.required'=>"Phone Number needed",
+            'password.required'=>"Password needed for login"
             
         ]
         
@@ -65,6 +67,7 @@ class StudentController extends Controller
         $student->password = $request->password;
         $student->dob = $request->dob;
         $student->phone = $request->phone;
+        $student->address = $request->address;
         $student->save();
 
         return redirect()->route('studentList');
@@ -102,7 +105,8 @@ class StudentController extends Controller
              "student_id"=>"required",
              'dob'=>'required',
              'email'=>'email',
-             'phone'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/'
+             'phone'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/',
+             'address'=>'required'
          ],
          [
              'name.required'=>"name here",
@@ -118,6 +122,7 @@ class StudentController extends Controller
          $student->email = $request->email;
          $student->dob = $request->dob;
          $student->phone = $request->phone;
+         $student->address = $request->address;
          $student->save(); 
 
          return redirect()->route('studentList');

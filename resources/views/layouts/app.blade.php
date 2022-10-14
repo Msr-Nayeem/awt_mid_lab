@@ -11,7 +11,7 @@
       }
       </style>
   </head>
-  <body class="p-3 m-0 border-0 bd-example">
+  <body class="p-3 m-0 border-0 bd-example" >
    @include('inc.topnav')
     <div class="container">
       @yield('content')
