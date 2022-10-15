@@ -9,7 +9,7 @@
                         <img class="rounded-circle mt-5" width="150px" 
                             src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
                         <span class="font-weight-bold">Full Name</span>
-                        <span class="text-black-50">email@email.com</span>
+                        <span class="text-black-50">{{$student->email}}</span>
                         <input type="text" name="id" value="{{$student->id}}" class="form-control" readonly style="width:60px;">
                     </div>
                 </div>

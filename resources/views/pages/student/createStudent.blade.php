@@ -25,7 +25,7 @@
                         @enderror
                         <br>
                     
-                        <label class="labels">Email ID</label>
+                        <label class="labels">Email</label>
                         <input type="text" class="form-control" name="email" placeholder="enter email"> 
                         @error('email')
                             <span class="text-danger">{{$message}}</span><br>
@@ -60,6 +60,15 @@
                         @error('dob')
                             <span class="text-danger">{{$message}}</span><br>
                         @enderror
+                        <br>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="labels">Register As</label>
+                        <select name="type" style="width:150px;">
+                            <option selected>Select Type</option>
+                            <option value="admin">Admin</option>
+                            <option value="teacher">Teacher</option>
+                        </select>
                         <br>
                     </div>
 

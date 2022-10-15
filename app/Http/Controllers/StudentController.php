@@ -19,8 +19,11 @@ class StudentController extends Controller
         ->where('password', $request->password)
         ->first();
         if($student){
+            $request->session()->put('id', $student->id);
             $request->session()->put('user', $student->name);
-            return redirect()->route('studentHome');
+            $request->session()->put('type', $student->type);
+            /* return redirect()->route('studentHome'); */
+            return redirect()->route('newProfile');
         }
         else{
              return redirect()->back()->withErrors(['User not found']);
@@ -61,13 +64,15 @@ class StudentController extends Controller
         );
 
         $student = new Student();
+        
+        $student->type = $request->type;
         $student->name = $request->name;
-        $student->student_id = $request->student_id;
         $student->email = $request->email;
         $student->password = $request->password;
-        $student->dob = $request->dob;
         $student->phone = $request->phone;
         $student->address = $request->address;
+        $student->student_id = $request->student_id;
+        $student->dob = $request->dob;
         $student->save();
 
         return redirect()->route('studentList');
@@ -116,14 +121,16 @@ class StudentController extends Controller
          
          );
  
-         $student = Student::where('id', $request->id)->first();
-         $student->name = $request->name;
-         $student->student_id = $request->student_id;
-         $student->email = $request->email;
-         $student->dob = $request->dob;
-         $student->phone = $request->phone;
-         $student->address = $request->address;
-         $student->save(); 
+        $student = Student::where('id', $request->id)->first();
+        $student->type = $request->type;
+        $student->name = $request->name;
+        $student->email = $request->email;
+        $student->password = $request->password;
+        $student->phone = $request->phone;
+        $student->address = $request->address;
+        $student->student_id = $request->student_id;
+        $student->dob = $request->dob;
+        $student->save();
 
          return redirect()->route('studentList');
         }
@@ -135,6 +142,16 @@ class StudentController extends Controller
             $student->delete();
 
             return redirect()->route('studentList');
+        }
+
+
+
+
+        //newProfile
+        public function profile(){
+            $student = Student::where('id',session()->get("id"))->first();
+            return view('pages.student.profile')->with('student', $student);
+    
         }
        
 
