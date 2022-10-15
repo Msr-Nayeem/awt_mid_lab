@@ -11,6 +11,7 @@ class StudentController extends Controller
     public function studentHome(){
         
         $student = Student::where('id', session()->get("id"))->first();
+        session()->put('log', $student->id);
         return view('pages.student.studentHome')->with('student', $student);
     }
     public function studentLogin(){
@@ -31,10 +32,8 @@ class StudentController extends Controller
     }
 
     public function studentLogout(){
-        session()->forget("user");
-        session()->forget("id");
-        session()->forget("utype");
-        return view('pages.student.studentLogin');
+        session()->flush();
+        return redirect()->route('studentLogin');
     }
 
     // ADD STUDENT
