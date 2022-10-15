@@ -23,6 +23,11 @@ class StudentController extends Controller
         ->first();
         if($student){ 
             $request->session()->put('id', $student->id);
+            if($request->session()->has('url')){
+                $url = $request->session()->get('url');
+                $request->session()->forget('url');
+                return redirect()->route($url);
+            }
             return redirect()->route('studentHome');
         }
         else{

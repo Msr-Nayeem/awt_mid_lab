@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Illuminate\Support\Facades\Route;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -20,6 +21,8 @@ class StudentCheck
             return $next($request);
         }
         else{
+            $url = Route::current()->getName();
+            $request->session()->put('url', $url);
             return redirect()->route('studentLogin')->withErrors(['login must !']);
         }
         

@@ -19,7 +19,7 @@ Route::get('/index', function() {
     return view('welcome');
 });
 
-Route::get('/profile',[PagesController::class, 'profile'])->name('profile');
+Route::get('/profilee',[PagesController::class, 'profile'])->name('profile');
 Route::get('/login',[PagesController::class, 'loginPage'])->name('login');
 
 
@@ -56,7 +56,7 @@ Route::post('/studentLogin',[StudentController::class, 'studentLoginCheck'])->na
 
 Route::get('/studentLogout',[StudentController::class, 'studentLogout'])->name('studentLogout');
 
-Route::get('/profile}',[StudentController::class, 'profile'])->name('profile');
+Route::get('/profile}',[StudentController::class, 'profile'])->name('profile')->middleware('checkLogin');
 Route::get('/details/{id}',[StudentController::class, 'details'])->name('details');
 
 
