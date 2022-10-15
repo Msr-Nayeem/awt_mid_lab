@@ -10,6 +10,7 @@
                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                     <div class="mt-3">
                       <h4 style = "text-transform:capitalize;">{{$student->name}}</h4>
+                      <h6 class="text-secondary" style = "text-transform:capitalize;">Role: {{$student->utype}}</h6>
                     </div>
                   </div>
                 </div>

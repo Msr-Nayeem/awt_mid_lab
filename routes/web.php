@@ -39,24 +39,23 @@ Route::get('/user/{id}', function($id) {
 });
 
 //Student
-Route::get('/studentHome',[StudentController::class, 'studentHome'])->name('studentHome')->middleware('checkLogin');
+Route::get('/studentHome',[StudentController::class, 'studentHome'])->name('studentHome')->middleware('loginCheck');
 Route::get('/studentList',[StudentController::class, 'studentList'])->name('studentList');
 
-Route::get('/createStudent',[StudentController::class, 'createStudent'])->name('createStudent')->middleware('checkLogin');
+Route::get('/createStudent',[StudentController::class, 'createStudent'])->name('createStudent')->middleware('loginCheck');
 Route::post('/createStudent',[StudentController::class, 'createStudentSubmitted'])->name('createStudent');
 
-Route::get('/studentEdit/{id}',[StudentController::class, 'studentEdit'])->name('studentEdit')->middleware('checkLogin');
+Route::get('/studentEdit/{id}',[StudentController::class, 'studentEdit'])->name('studentEdit')->middleware('loginCheck','adminCheck');
 Route::post('/studentEdit',[StudentController::class, 'studentEditSubmitted'])->name('studentEdit');
 
-Route::get('/studentDelete/{id}',[StudentController::class, 'studentDelete'])->name('studentDelete')->middleware('checkLogin');
+Route::get('/studentDelete/{id}',[StudentController::class, 'studentDelete'])->name('studentDelete')->middleware('loginCheck','adminCheck');
 
 Route::get('/studentLogin',[StudentController::class, 'studentLogin'])->name('studentLogin');
 Route::post('/studentLogin',[StudentController::class, 'studentLoginCheck'])->name('studentLogin');
 
-
 Route::get('/studentLogout',[StudentController::class, 'studentLogout'])->name('studentLogout');
 
-Route::get('/profile}',[StudentController::class, 'profile'])->name('profile')->middleware('checkLogin');
+Route::get('/profile}',[StudentController::class, 'profile'])->name('profile')->middleware('loginCheck');
 Route::get('/details/{id}',[StudentController::class, 'details'])->name('details');
 
 

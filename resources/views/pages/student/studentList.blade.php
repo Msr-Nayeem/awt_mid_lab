@@ -19,4 +19,10 @@
         @endforeach
     </table>
 
+    @if($errors->any())
+        <div class="alert alert-success">
+        <h6>{{$errors->first()}}</h6>
+        </div>
+    @endif
+
  @endsection

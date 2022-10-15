@@ -7,13 +7,8 @@
             @if(session()->missing('id'))
             <a class="btn btn-outline-success me-2" type="button" href="{{route('studentLogin')}}">Login</a>
             @endif
-            @if(session()->has('log'))
+            @if(session()->has('id'))
             <a class="btn btn-outline-success me-2" type="button" href="{{route('studentLogout')}}">Log Out</a>
             @endif
-            
-            
-        
-            
-            
         </div>
 </nav>
