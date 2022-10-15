@@ -21,41 +21,55 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Full Name</h6>
+                      <h6 class="mb-0">Full Name :</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                        {{$student->name}}
+                    <div class="col-sm-3 text-secondary">
+                    <h6 class="mb-0">{{$student->name}}</h6>
                     </div>
-                  </div>
-                  <hr>
-                  <div class="row">
+
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Email</h6>
+                      <h6 class="mb-0">Student ID :</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                    {{$student->email}}
+                    <div class="col-sm-3 text-secondary">
+                      <h6 class="mb-0">{{$student->student_id}}</h6>
                     </div>
                   </div>
                   <hr>
+
                   <div class="row">
+                     <div class="col-sm-3">
+                      <h6 class="mb-0">Email :</h6>
+                    </div>
+                    <div class="col-sm-3 text-secondary">
+                    <h6 class="mb-0"><u>{{$student->email}}</u></h6>
+                    </div>
+
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Phone</h6>
+                      <h6 class="mb-0">Phone :</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                    {{$student->phone}}
+                    <div class="col-sm-3 text-secondary">
+                      <h6 class="mb-0">{{$student->phone}}</h6>
                     </div>
+
                   </div>
-                  
                   <hr>
+
                   <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Address</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-3 text-secondary">
                     {{$student->address}}
+                    </div>
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Date of Birth</h6>
+                    </div>
+                    <div class="col-sm-3 text-secondary">
+                    {{$student->dob}}
                     </div>
                   </div>
                   <hr>
+                  
                   <div class="row">
                     <div class="col-sm-12">
                       <a class="btn btn-info " href="">Edit</a>

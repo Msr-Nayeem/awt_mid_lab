@@ -33,6 +33,7 @@ class StudentController extends Controller
 
     public function studentLogout(){
         session()->forget("user");
+        session()->forget("id");
         return view('pages.student.studentLogin');
     }
 
