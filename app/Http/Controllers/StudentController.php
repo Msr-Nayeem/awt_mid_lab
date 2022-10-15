@@ -9,7 +9,9 @@ class StudentController extends Controller
 {
     
     public function studentHome(){
-        return view('pages.student.studentHome');
+        
+        $student = Student::where('id', session()->get("id"))->first();
+        return view('pages.student.studentHome')->with('student', $student);
     }
     public function studentLogin(){
         return view('pages.student.studentLogin');
@@ -18,12 +20,9 @@ class StudentController extends Controller
         $student = Student::where('email', $request->email)
         ->where('password', $request->password)
         ->first();
-        if($student){
+        if($student){ 
             $request->session()->put('id', $student->id);
-            $request->session()->put('user', $student->name);
-            $request->session()->put('type', $student->type);
-            /* return redirect()->route('studentHome'); */
-            return redirect()->route('newProfile');
+            return redirect()->route('studentHome');
         }
         else{
              return redirect()->back()->withErrors(['User not found']);
@@ -34,6 +33,7 @@ class StudentController extends Controller
     public function studentLogout(){
         session()->forget("user");
         session()->forget("id");
+        session()->forget("utype");
         return view('pages.student.studentLogin');
     }
 
@@ -66,7 +66,7 @@ class StudentController extends Controller
 
         $student = new Student();
         
-        $student->type = $request->type;
+        $student->utype = $request->utype;
         $student->name = $request->name;
         $student->email = $request->email;
         $student->password = $request->password;
@@ -107,7 +107,7 @@ class StudentController extends Controller
     public function studentEditSubmitted(Request $request){
 
          $validate = $request->validate([
-             "name"=>"required|min:5|max:20",
+             "name"=>"required|min:5",
              "student_id"=>"required",
              'dob'=>'required',
              'email'=>'email',
@@ -121,19 +121,18 @@ class StudentController extends Controller
          ]
          
          );
- 
-        $student = Student::where('id', $request->id)->first();
-        $student->type = $request->type;
-        $student->name = $request->name;
-        $student->email = $request->email;
-        $student->password = $request->password;
-        $student->phone = $request->phone;
-        $student->address = $request->address;
-        $student->student_id = $request->student_id;
-        $student->dob = $request->dob;
-        $student->save();
+        
+         $student = Student::where('id', $request->id)->first();
+         $student->name = $request->name;
+         $student->email = $request->email;
+         $student->password = $request->password;
+         $student->phone = $request->phone;
+         $student->address = $request->address;
+         $student->student_id = $request->student_id;
+         $student->dob = $request->dob;
+         $student->save(); 
 
-         return redirect()->route('studentList');
+         return redirect()->route('studentList'); 
         }
          // EDIT STUDENT DONE
 
@@ -152,6 +151,11 @@ class StudentController extends Controller
         public function profile(){
             $student = Student::where('id',session()->get("id"))->first();
             return view('pages.student.profile')->with('student', $student);
+    
+        }
+        public function details(Request $request){
+            $student = Student::where('id', $request->id)->first();
+            return view('pages.student.details')->with('student', $student);
     
         }
        

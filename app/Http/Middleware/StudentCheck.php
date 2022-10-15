@@ -16,7 +16,7 @@ class StudentCheck
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->session()->has('user') && $request->session()->has('type')) {
+        if ($request->session()->has('id')) {
             return $next($request);
         }
         else{

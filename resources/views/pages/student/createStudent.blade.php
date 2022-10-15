@@ -64,7 +64,7 @@
                     </div>
                     <div class="col-md-4">
                         <label class="labels">Register As</label>
-                        <select name="type" style="width:150px;">
+                        <select name="utype" style="width:150px;">
                             <option selected>Select Type</option>
                             <option value="admin">Admin</option>
                             <option value="teacher">Teacher</option>

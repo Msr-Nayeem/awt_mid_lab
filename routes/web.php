@@ -57,6 +57,7 @@ Route::post('/studentLogin',[StudentController::class, 'studentLoginCheck'])->na
 Route::get('/studentLogout',[StudentController::class, 'studentLogout'])->name('studentLogout');
 
 Route::get('/profile}',[StudentController::class, 'profile'])->name('profile');
+Route::get('/details/{id}',[StudentController::class, 'details'])->name('details');
 
 
 

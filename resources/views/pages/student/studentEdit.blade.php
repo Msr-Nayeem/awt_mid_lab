@@ -8,18 +8,20 @@
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                         <img class="rounded-circle mt-5" width="150px" 
                             src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-                        <span class="font-weight-bold">Full Name</span>
+                        <span class="font-weight-bold" style = "text-transform:capitalize;">{{$student->name}}</span>
                         <span class="text-black-50">{{$student->email}}</span>
-                        <input type="text" name="id" value="{{$student->id}}" class="form-control" readonly style="width:60px;">
+                        
+                        
                     </div>
                 </div>
                 <div class="col-md-5 border-right">
                 <div class="p-3 py-5">
                 <div>
-                    <h3>Registration</h3>
+                    <h3>Update Information</h3>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-10">
+                    <input type="text" class="form-control" name="id" value="{{$student->id}}" hidden>
                         <label class="labels">Full Name</label>
                         <input type="text" class="form-control" name="name" value="{{$student->name}}" placeholder="Enter full name">
                         @error('name')
