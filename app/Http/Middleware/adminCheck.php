@@ -24,7 +24,7 @@ class adminCheck
             return $next($request);
         }
         else{
-            return redirect()->back()->withErrors(['This feature only for admin']);
+            return redirect()->back()->withErrors(['This feature is for admin only']);
         }
         
     }

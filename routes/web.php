@@ -40,7 +40,7 @@ Route::get('/user/{id}', function($id) {
 
 //Student
 Route::get('/studentHome',[StudentController::class, 'studentHome'])->name('studentHome')->middleware('loginCheck');
-Route::get('/studentList',[StudentController::class, 'studentList'])->name('studentList');
+Route::get('/studentList',[StudentController::class, 'studentList'])->name('studentList')->middleware('loginCheck');
 
 Route::get('/createStudent',[StudentController::class, 'createStudent'])->name('createStudent')->middleware('loginCheck');
 Route::post('/createStudent',[StudentController::class, 'createStudentSubmitted'])->name('createStudent');

@@ -2,13 +2,10 @@
 
 @section('content')
 
- <form action="{{route('createStudent')}}" class="form-group" method="post" autocomplete="off">
+ <form action="{{route('createStudent')}}" class="form-group" method="post" autocomplete="off" style="cursor:default;">
         {{csrf_field()}}
         <div class="col-md-5 border-right">
             <div class="p-3 py-5">
-                <div>
-                    <h3>Registration</h3>
-                </div>
                 <div class="row mt-3">
                     <div class="col-md-10">
                         <label class="labels">Full Name</label>
@@ -56,7 +53,7 @@
                     </div>
                     <div class="col-md-4">
                         <label class="labels">Date of Birth</label>
-                        <input type="date" class="form-control" name="dob">
+                        <input type="date" class="form-control" name="dob" style="cursor:pointer;">
                         @error('dob')
                             <span class="text-danger">{{$message}}</span><br>
                         @enderror
@@ -64,8 +61,8 @@
                     </div>
                     <div class="col-md-4">
                         <label class="labels">Register As</label>
-                        <select name="utype" style="width:150px;">
-                            <option selected>Select Type</option>
+                        <select name="utype" style="width:150px; cursor:pointer;">
+                            <option selected >Select Type</option>
                             <option value="admin">Admin</option>
                             <option value="teacher">user</option>
                         </select>

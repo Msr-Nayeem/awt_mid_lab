@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
+    <div class="container" style="cursor:default;">
     <div class="main-body">
           <div class="row gutters-sm">
             <div class="col-md-4 mb-3">

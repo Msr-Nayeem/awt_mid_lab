@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Http\Controllers\CookieController;
 
 class StudentController extends Controller
 {
@@ -15,25 +18,39 @@ class StudentController extends Controller
         return view('pages.student.studentHome')->with('student', $student);
     }
     public function studentLogin(){
+        
         return view('pages.student.studentLogin');
     }
     public function studentLoginCheck(Request $request){
-        $student = Student::where('email', $request->email)
-        ->where('password', $request->password)
-        ->first();
-        if($student){ 
-            $request->session()->put('id', $student->id);
-            if($request->session()->has('url')){
-                $url = $request->session()->get('url');
-                $request->session()->forget('url');
-                return redirect()->route($url);
-            }
-            return redirect()->route('studentHome');
+        $email = $request->email;
+        $password = $request->password;
+
+         $student = Student::where('email', $email)
+        ->where('password', $password)->first();
+
+        if( $request->input('remember') == 'remember'){
+            cookie()->queue(cookie(name: 'email', value: $email, minutes: 60*7*24));
+            cookie()->queue(cookie(name: 'password', value: $password, minutes: 60*7*24));    
         }
         else{
-             return redirect()->back()->withErrors(['User not found']);
-            
+            cookie()->queue(cookie(name: 'email', value: '', minutes: -3600));
+            cookie()->queue(cookie(name: 'password', value: '', minutes: -3600));  
         }
+
+        if($student){    
+            $request->session()->put('id', $student->id);
+             if($request->session()->has('url')){
+                 $url = $request->session()->get('url');
+                 $request->session()->forget('url');
+                 return redirect()->route($url);
+             }
+             return redirect()->route('studentHome'); 
+             
+         }
+         else{
+              return redirect()->back()->withErrors(['User not found']);
+         } 
+        
     }
 
     public function studentLogout(){
@@ -162,9 +179,7 @@ class StudentController extends Controller
             return view('pages.student.details')->with('student', $student);
     
         }
-       
 
-    
-    
-     
+
+           
 }
