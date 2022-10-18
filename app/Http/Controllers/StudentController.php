@@ -180,6 +180,43 @@ class StudentController extends Controller
     
         }
 
+        public function profileEdit(Request $request){
+            $student = Student::where('id', $request->id)->first();
+            return view('pages.student.profileEdit')->with('student', $student);
+    
+        }
+
+
+        public function profileEditSubmitted(Request $request){
+        
+            $validate = $request->validate([
+                "name"=>"required|min:5",
+                "student_id"=>"required",
+                'dob'=>'required',
+                'email'=>'email',
+                'phone'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/',
+                'address'=>'required'
+            ],
+            [
+                'name.required'=>"name here",
+                'dob.required'=>"Select date of birth",
+                'phone.required'=>"Phone Number"
+            ]
+            
+            );
+           
+            $student = Student::where('id', $request->id)->first();
+            $student->name = $request->name;
+            $student->email = $request->email;
+            $student->phone = $request->phone;
+            $student->address = $request->address;
+            $student->student_id = $request->student_id;
+            $student->dob = $request->dob;
+            $student->save(); 
+   
+            return redirect()->route('profile'); 
+           }
+
 
            
 }

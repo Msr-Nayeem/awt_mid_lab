@@ -73,7 +73,7 @@
                   
                   <div class="row">
                     <div class="col-sm-12">
-                      <a class="btn btn-info " href="">Edit</a>
+                      <a class="btn btn-info " href="/profileEdit/{{$student->id}}">Edit/Update</a>
                     </div>
                   </div>
                 </div>

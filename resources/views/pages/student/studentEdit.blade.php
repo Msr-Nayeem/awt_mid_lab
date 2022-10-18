@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <form action="{{route('studentEdit')}}"" class="form-group" method="post" autocomplete="off">
+    <form action="{{route('profileEdit')}}" class="form-group" method="post" autocomplete="off">
         {{csrf_field()}}
         <div class="container rounded bg-white mt-5 mb-5">
             <div class="row">

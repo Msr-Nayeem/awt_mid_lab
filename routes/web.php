@@ -59,4 +59,8 @@ Route::get('/profile}',[StudentController::class, 'profile'])->name('profile')->
 Route::get('/details/{id}',[StudentController::class, 'details'])->name('details');
 
 
+Route::get('/profileEdit/{id}',[StudentController::class, 'profileEdit'])->name('profileEdit')->middleware('loginCheck');
+Route::post('/profileEdit',[StudentController::class, 'profileEditSubmitted'])->name('profileEdit')->middleware('loginCheck');
+
+
 
