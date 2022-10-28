@@ -9,19 +9,28 @@
         <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        <p">Are You Sure?<br>
-        Once Deleted, can not be reverted.</p>
-      </div>
+      
+      @if(session()->get("type")=="teacher")
+        <div class="modal-body">
+          <h6 style="color: red;">This feature is for admin only</h6>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Okay</button>
+        </div>
+        @else
+        <div class="modal-body">
+          <p">Are You Sure?<br>
+          Once Deleted, can not be reverted.</p>
+        </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
         <a type="button" id="myAnchor" class="btn btn-danger dltBtn btn-sm" href="">Yes Delete</a>
       </div>
       </form>
+      @endif
     </div>
   </div>
 </div>
-
     <br><br>
     @if($errors->any())
         <div class="alert alert-success">
@@ -40,7 +49,6 @@
             <td><a href="/details/{{$student->id}}">{{$student->name}}</a></td>
             <td style="cursor:default;">{{$student->student_id}}</td>
             <td><a href="/studentEdit/{{$student->id}}">Edit</a></td>
-            <td><a href="/studentDelete/{{$student->id}}">Delete</a></td>
             <td><button type="button" id="dltBtn" class="btn btn-danger dltBtn btn-sm" value="{{$student->id}}">Delete</button></td>
         </tr>
         @endforeach

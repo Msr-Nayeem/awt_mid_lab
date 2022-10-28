@@ -39,6 +39,7 @@ class StudentController extends Controller
 
         if($student){    
             $request->session()->put('id', $student->id);
+            $request->session()->put('type', $student->utype);
              if($request->session()->has('url')){
                  $url = $request->session()->get('url');
                  $request->session()->forget('url');
