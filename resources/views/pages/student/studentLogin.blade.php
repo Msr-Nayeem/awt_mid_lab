@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
-    <h3><center>Login as Student</center></h3>
-    
+@section('content') 
     <form action="{{route('studentLogin')}}" class="form-group" method="post" autocomplete="off">
         {{csrf_field()}}   
         <div class="col-md-4">

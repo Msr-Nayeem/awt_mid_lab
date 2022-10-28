@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+
     <br><br>
     @if($errors->any())
         <div class="alert alert-success">
@@ -20,10 +22,20 @@
             <td style="cursor:default;">{{$student->student_id}}</td>
             <td><a href="/studentEdit/{{$student->id}}">Edit</a></td>
             <td><a href="/studentDelete/{{$student->id}}">Delete</a></td>
+            <td><button type="button" value="{{$student->id}}" id="dltBtn" class="btn btn-danger btn-sm">Delete</button></td>
+            <td><button type="button" class="btn btn-primary" id="dltBtn"> Button</button></td>
         </tr>
         @endforeach
     </table>
 
-    
 
+
+
+@endsection
+
+
+ @section('scriptList')
+<script>
+
+ </script>
  @endsection
