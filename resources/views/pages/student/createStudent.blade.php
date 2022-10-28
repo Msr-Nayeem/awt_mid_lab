@@ -64,7 +64,7 @@
                         <select name="utype" style="width:150px; cursor:pointer;">
                             <option selected >Select Type</option>
                             <option value="admin">Admin</option>
-                            <option value="teacher">user</option>
+                            <option value="teacher">Teacher</option>
                         </select>
                         <br>
                     </div>
