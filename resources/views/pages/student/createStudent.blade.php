@@ -30,7 +30,7 @@
                         <br>
 
                         <label for="">Password</label><br>
-                        <input type="password" name="password" class="form-control" placeholder="Enter Password">
+                        <input type="text" name="password" class="form-control" placeholder="Enter Password">
                         @error('password')
                             <span class="text-danger">{{$message}}</span><br>
                         @enderror

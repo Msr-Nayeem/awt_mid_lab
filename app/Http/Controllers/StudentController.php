@@ -23,14 +23,15 @@ class StudentController extends Controller
     }
     public function studentLoginCheck(Request $request){
         $email = $request->email;
-        $password = $request->password;
+        $p = $request->password;
+        $password = sha1($request->password);
 
          $student = Student::where('email', $email)
         ->where('password', $password)->first();
 
         if( $request->input('remember') == 'remember'){
             cookie()->queue(cookie(name: 'email', value: $email, minutes: 60*7*24));
-            cookie()->queue(cookie(name: 'password', value: $password, minutes: 60*7*24));    
+            cookie()->queue(cookie(name: 'password', value: $p, minutes: 60*7*24));    
         }
         else{
             cookie()->queue(cookie(name: 'email', value: '', minutes: -3600));
@@ -91,7 +92,7 @@ class StudentController extends Controller
         $student->utype = $request->utype;
         $student->name = $request->name;
         $student->email = $request->email;
-        $student->password = $request->password;
+        $student->password = sha1($request->password);
         $student->phone = $request->phone;
         $student->address = $request->address;
         $student->student_id = $request->student_id;
@@ -160,9 +161,8 @@ class StudentController extends Controller
 
         //Delete Student
         public function studentDelete(Request $request){
-            $student = Student::where('id', $request->id)->first();
+            $student = Student::where('id', $request->sid)->first();
             $student->delete();
-
             return redirect()->route('studentList');
         }
 

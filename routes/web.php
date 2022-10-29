@@ -48,7 +48,7 @@ Route::post('/createStudent',[StudentController::class, 'createStudentSubmitted'
 Route::get('/studentEdit/{id}',[StudentController::class, 'studentEdit'])->name('studentEdit')->middleware('loginCheck','adminCheck');
 Route::post('/studentEdit',[StudentController::class, 'studentEditSubmitted'])->name('studentEdit');
 
-Route::get('/studentDelete/{id}',[StudentController::class, 'studentDelete'])->name('studentDelete')->middleware('loginCheck','adminCheck');
+Route::get('/studentDelete/{sid}',[StudentController::class, 'studentDelete'])->name('studentDelete');
 
 Route::get('/studentLogin',[StudentController::class, 'studentLogin'])->name('studentLogin');
 Route::post('/studentLogin',[StudentController::class, 'studentLoginCheck'])->name('studentLogin');

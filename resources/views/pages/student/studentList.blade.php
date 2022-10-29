@@ -2,11 +2,11 @@
 
 @section('content')
 <!-- Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="confirmationModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+        <h5 class="modal-title" id="modalTitle">Dynamic Title</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       
@@ -19,12 +19,11 @@
         </div>
         @else
         <div class="modal-body">
-          <p">Are You Sure?<br>
-          Once Deleted, can not be reverted.</p>
+          <p id="alertMsg">Dynamic Text</p>
         </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
-        <a type="button" id="myAnchor" class="btn btn-danger dltBtn btn-sm" href="">Yes Delete</a>
+        <a type="button" id="myAnchor" class="btn btn-danger dltBtn btn-sm" href="">Okay</a>
       </div>
       </form>
       @endif
@@ -48,7 +47,7 @@
         <tr>
             <td><a href="/details/{{$student->id}}">{{$student->name}}</a></td>
             <td style="cursor:default;">{{$student->student_id}}</td>
-            <td><a href="/studentEdit/{{$student->id}}">Edit</a></td>
+            <td><button type="button" id="editBtn" class="btn btn-danger dltBtn btn-sm" value="{{$student->id}}">EDIT</button></td>
             <td><button type="button" id="dltBtn" class="btn btn-danger dltBtn btn-sm" value="{{$student->id}}">Delete</button></td>
         </tr>
         @endforeach
@@ -65,12 +64,23 @@
 
 <script>  
 $(document).ready(function () {
-  $(document).on('click', '.dltBtn', function(){
+  $(document).on('click', '#dltBtn', function(){
     var sid = $(this).val();
-    //alert(sid);
     $('#deleteModal').modal('show');
-    $('#inputId').val(sid);
-    document.getElementById("myAnchor").href = "/studentDelete/sid";
+    document.getElementById("modalTitle").innerHTML="Delete Confirmation !";
+    document.getElementById("myAnchor").innerHTML="Yes Delete";
+    document.getElementById("alertMsg").innerHTML="Are You Sure?<br>Once Deleted, can not be reversed.";
+    document.getElementById("myAnchor").href ="/studentDelete/"+sid;
+    
+  });
+  $(document).on('click', '#editBtn', function(){
+    var sid = $(this).val();
+    $('#deleteModal').modal('show');
+    document.getElementById("myAnchor").href ="/studentEdit/"+sid;
+    document.getElementById("modalTitle").innerHTML="Edit Confirmation !";
+    document.getElementById("alertMsg").innerHTML="Are You sure to edit?";
+    document.getElementById("myAnchor").innerHTML="Yes Edit";
+    
   });
 });
   
