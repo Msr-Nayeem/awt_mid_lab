@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="confirmationModal" aria-hidden="true">
+<div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="confirmationModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -47,8 +47,8 @@
         <tr>
             <td><a href="/details/{{$student->id}}">{{$student->name}}</a></td>
             <td style="cursor:default;">{{$student->student_id}}</td>
-            <td><button type="button" id="editBtn" class="btn btn-danger dltBtn btn-sm" value="{{$student->id}}">EDIT</button></td>
-            <td><button type="button" id="dltBtn" class="btn btn-danger dltBtn btn-sm" value="{{$student->id}}">Delete</button></td>
+            <td><button type="button"  id="{{$student->name}}" name="edit" onclick="alertFunction(this)" class="btn btn-danger dltBtn btn-sm" value="{{$student->id}}">EDIT</button></td>
+            <td><button type="button" id="{{$student->name}}" name="delete" onclick="alertFunction(this)" class="btn btn-danger dltBtn btn-sm" value="{{$student->id}}">Delete</button></td>
         </tr>
         @endforeach
     </table>
@@ -58,31 +58,28 @@
 
 @endsection
 
-
- @section('scriptList')
-
-
+@section('scriptList')
 <script>  
-$(document).ready(function () {
-  $(document).on('click', '#dltBtn', function(){
-    var sid = $(this).val();
-    $('#deleteModal').modal('show');
-    document.getElementById("modalTitle").innerHTML="Delete Confirmation !";
-    document.getElementById("myAnchor").innerHTML="Yes Delete";
-    document.getElementById("alertMsg").innerHTML="Are You Sure?<br>Once Deleted, can not be reversed.";
-    document.getElementById("myAnchor").href ="/studentDelete/"+sid;
+
+  function alertFunction(btn){
+    var sid = btn.value;
+    var sname = btn.id;  
+    if(btn.name == "delete"){
+      $('#alertModal').modal('show');
+      document.getElementById("modalTitle").innerHTML="Delete Confirmation !";
+      document.getElementById("myAnchor").innerHTML="Yes Delete";
+      document.getElementById("alertMsg").innerHTML="Are You Sure?<br>Once Deleted, can not be reversed.<br>Student : ("+sname+") will be deleted.";
+      document.getElementById("myAnchor").href ="/studentDelete/"+sid;
+    }
+    else{
+      $('#alertModal').modal('show');
+      document.getElementById("myAnchor").href ="/studentEdit/"+sid;
+      document.getElementById("modalTitle").innerHTML="Edit Confirmation !";
+      document.getElementById("alertMsg").innerHTML="Are You sure to edit?<br>You are going to edit: ("+sname+")";
+      document.getElementById("myAnchor").innerHTML="Yes Edit";
+      
+    }
     
-  });
-  $(document).on('click', '#editBtn', function(){
-    var sid = $(this).val();
-    $('#deleteModal').modal('show');
-    document.getElementById("myAnchor").href ="/studentEdit/"+sid;
-    document.getElementById("modalTitle").innerHTML="Edit Confirmation !";
-    document.getElementById("alertMsg").innerHTML="Are You sure to edit?";
-    document.getElementById("myAnchor").innerHTML="Yes Edit";
-    
-  });
-});
-  
+  }
  </script>
  @endsection
