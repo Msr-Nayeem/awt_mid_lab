@@ -63,4 +63,5 @@ Route::get('/profileEdit/{id}',[StudentController::class, 'profileEdit'])->name(
 Route::post('/profileEdit',[StudentController::class, 'profileEditSubmitted'])->name('profileEdit')->middleware('loginCheck');
 
 
+Route::get('/changePassword/{id}/{password}',[StudentController::class, 'changePassword'])->name('changePassword')->middleware('loginCheck');
 

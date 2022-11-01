@@ -7,7 +7,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalTitle">Dynamic Title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
       </div>
       
       @if(session()->get("type")=="teacher")
@@ -15,22 +15,22 @@
           <h6 style="color: red;">This feature is for admin only</h6>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Okay</button>
+          <button type="button" class="btn btn-secondary btn-sm" data-mdb-dismiss="modal">Okay</button>
         </div>
         @else
         <div class="modal-body">
           <p id="alertMsg">Dynamic Text</p>
         </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
-        <a type="button" id="myAnchor" class="btn btn-danger dltBtn btn-sm" href="">Okay</a>
+        <button type="button" class="btn btn-secondary btn-sm" data-mdb-dismiss="modal">Cancel</button>
+        <a type="button" id="myAnchor" class="btn btn-danger btn-sm" href="">Okay</a>
       </div>
       </form>
       @endif
     </div>
   </div>
 </div>
-    <br><br>
+    <br>
     @if($errors->any())
         <div class="alert alert-success">
         <h6 style="color: red;">{{$errors->first()}}</h6>
@@ -47,8 +47,8 @@
         <tr>
             <td><a href="/details/{{$student->id}}">{{$student->name}}</a></td>
             <td style="cursor:default;">{{$student->student_id}}</td>
-            <td><button type="button"  id="{{$student->name}}" name="edit" onclick="alertFunction(this)" class="btn btn-danger dltBtn btn-sm" value="{{$student->id}}">EDIT</button></td>
-            <td><button type="button" id="{{$student->name}}" name="delete" onclick="alertFunction(this)" class="btn btn-danger dltBtn btn-sm" value="{{$student->id}}">Delete</button></td>
+            <td><button  id="{{$student->name}}" name="edit" onclick="alertFunction(this)" class="btn btn-danger btn-sm" value="{{$student->id}}">EDIT</button></td>
+            <td><button  id="{{$student->name}}" name="delete" onclick="alertFunction(this)" class="btn btn-danger btn-sm" value="{{$student->id}}">Delete</button></td>
         </tr>
         @endforeach
     </table>
