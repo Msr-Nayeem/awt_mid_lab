@@ -92,5 +92,12 @@ input#password{
   width: 75%;
   font-size: 20px;
 }
+.err{
+  height: 100px; 
+  width:190px; 
+  margin-left: 25%; 
+  margin-top: 10%; 
+  font-size: 22px;
+}
 
 

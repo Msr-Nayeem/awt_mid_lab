@@ -25,8 +25,7 @@ class StudentController extends Controller
         $p = $request->password;
         $password = $request->password;
 
-         $student = Student::where('email', $email)
-        ->where('password', $password)->first();
+        $student = Student::where('email', $email)->first();
 
         if( $request->input('remember') == 'remember'){
             cookie()->queue(cookie(name: 'email', value: $email, minutes: 60*7*24));
@@ -37,19 +36,28 @@ class StudentController extends Controller
             cookie()->queue(cookie(name: 'password', value: '', minutes: -3600));  
         }
 
-        if($student){    
-            $request->session()->put('id', $student->id);
-            $request->session()->put('type', $student->utype);
-             if($request->session()->has('url')){
-                 $url = $request->session()->get('url');
-                 $request->session()->forget('url');
-                 return redirect()->route($url);
-             }
-             return redirect()->route('studentHome'); 
+        if($student){
+            $student = Student::where('email', $email)
+            ->where('password', $password)->first();
+            if($student){
+                $request->session()->put('id', $student->id);
+                $request->session()->put('type', $student->utype);
+                 if($request->session()->has('url')){
+                     $url = $request->session()->get('url');
+                     $request->session()->forget('url');
+                     return redirect()->route($url);
+                 }
+                 return redirect()->route('studentHome'); 
+            }
+
+            else{
+                return redirect()->back()->withErrors(['Wrong Password !']);
+            }
+            
              
          }
          else{
-              return redirect()->back()->withErrors(['User not found']);
+              return redirect()->back()->withErrors(['User not found !']);
          } 
         
     }

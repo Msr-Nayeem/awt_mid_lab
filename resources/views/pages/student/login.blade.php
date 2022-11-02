@@ -1,7 +1,9 @@
 <html>
 <head>
+
     <link rel="stylesheet" href="{{asset('css/newLogin.css')}}">
     <title>Login</title>
+
 </head>
 <body>
     <div class="container">
@@ -25,6 +27,11 @@
             </div>
             <button type="submit" class="log-in" name="log-in">Log In</button>
             </form>
+            @if($errors->any())
+                <div class="err">
+                <h4>{{$errors->first()}}</h4>
+                </div>
+            @endif
     </div>
 </body>
 </html>
