@@ -71,11 +71,10 @@
           aria-expanded="false"
         >
           <img
-            src="https://bootdey.com/img/Content/avatar/avatar7.png"
+            src="{{asset('image/profile_icon.png')}}"
             class="rounded-circle"
             height="35"
-            alt="Black and White Portrait of a Man"
-            loading="lazy"
+            alt="profile icon"
           />
         </a>
         <ul

@@ -1,5 +1,11 @@
 @extends('layouts.app')
 @section('content')
+@if($errors->any())
+        <br>
+        <div class="alert alert-success">
+        <h6 style="color: red;">{{$errors->first()}}</h6>
+        </div>
+@endif
 <div
   class="modal fade"
   id="changePassword"
@@ -20,14 +26,13 @@
         <div class="modal-body">
           <input type="text" id="id"  class="form-control form-icon-trailing" value="{{$student->id}}" hidden />
           <div class="form-outline">
-              <i class="fas fa-exclamation-circle trailing"></i>
+              
               <input type="password" id="password"  class="form-control form-icon-trailing">
               <label class="form-label" for="form1">New Password</label>
                  
           </div>
           <span class="text-danger" id="password_error"><br></span>
           <div class="form-outline">
-              <i class="fas fa-exclamation-circle trailing"></i>
               <input type="password" id="password_confirm" class="form-control form-icon-trailing" />
               <label class="form-label" for="form1">Re-type Password</label>
           </div>
@@ -51,7 +56,7 @@
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                    <img src="{{asset('image/profile_icon.png')}}" alt="Admin" class="img-fluid" width="150">
                     <div class="mt-3">
                       <h4 style = "text-transform:capitalize;">{{$student->name}}</h4>
                       <h6 class="text-secondary" style = "text-transform:capitalize;">Role: {{$student->utype}}</h6>
@@ -116,20 +121,10 @@
                     </div>
                   </div>
                   <hr>
-                  
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <a class="btn btn-info " href="/profileEdit/{{$student->id}}">Edit/Update</a>
-                    </div>
-                  </div>
                 </div>
               </div>
               <br><br>
-    @if($errors->any())
-        <div class="alert alert-success">
-        <h6 style="color: red;">{{$errors->first()}}</h6>
-        </div>
-    @endif
+    
 
  
 @endsection
@@ -138,6 +133,8 @@
 <script>  
   function alertFunction(btn){   
     $('#changePassword').modal('show');
+    document.getElementById("password_error").innerHTML="<br>";
+    document.getElementById("password_errorr").innerHTML="<br>";
   }
   function checkPassword(){
     var password = document.getElementById("password").value;
@@ -146,11 +143,10 @@
 
     if(password.length < 5){
         document.getElementById("password_error").innerHTML="password must be 5+ <br>";
-    }
-    else if(password_confirm.length < 5){
-       document.getElementById("password_errorr").innerHTML="must be 5+<br>";
+        document.getElementById("password_errorr").innerHTML="password must be 5+<br>";
     }
     else if(password_confirm != password){
+      document.getElementById("password_error").innerHTML="<br>";
        document.getElementById("password_errorr").innerHTML="must be same<br>";
     }
     else

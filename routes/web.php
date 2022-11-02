@@ -23,7 +23,7 @@ Route::get('/profilee',[PagesController::class, 'profile'])->name('profile');
 Route::get('/login',[PagesController::class, 'loginPage'])->name('login');
 
 
-Route::get('/',[PagesController::class, 'home'])->name('home');
+Route::get('/hm',[PagesController::class, 'home'])->name('home');
 Route::get('/contact',[PagesController::class, 'contact'])->name('contact');
 Route::get('/service',[PagesController::class, 'service'])->name('service');
 Route::get('/about',[PagesController::class, 'about'])->name('about');

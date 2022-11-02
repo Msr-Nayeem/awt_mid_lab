@@ -18,7 +18,7 @@ class StudentController extends Controller
         return view('pages.student.studentHome')->with('student', $student);
     }
     public function studentLogin(){ 
-        return view('pages.student.studentLogin');
+        return view('pages.student.login');
     }
     public function studentLoginCheck(Request $request){
         $email = $request->email;
@@ -147,7 +147,6 @@ class StudentController extends Controller
          $student = Student::where('id', $request->id)->first();
          $student->name = $request->name;
          $student->email = $request->email;
-         $student->password = $request->password;
          $student->phone = $request->phone;
          $student->address = $request->address;
          $student->student_id = $request->student_id;
@@ -227,7 +226,7 @@ class StudentController extends Controller
         $student->password = $request->password;
         $student->save();
 
-         return redirect()->back()->withErrors(['password changed']);
+         return redirect()->back()->withErrors(['password changed successfully']);
 
     }
 

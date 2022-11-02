@@ -6,8 +6,7 @@
             <div class="row">
                 <div class="col-md-4 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                        <img class="rounded-circle mt-5" width="150px" 
-                            src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                        <img class="img-fluid" width="150px" src="{{asset('image/student_edit.png')}}">
                         <span class="font-weight-bold" style = "text-transform:capitalize;">{{$student->name}}</span>
                         <span class="text-black-50">{{$student->email}}</span>
                         
@@ -39,13 +38,6 @@
                         <label class="labels">Email</label>
                         <input type="text" class="form-control" name="email" value="{{$student->email}}" placeholder="enter email"> 
                         @error('email')
-                            <span class="text-danger">{{$message}}</span><br>
-                        @enderror
-                        <br>
-
-                        <label for="">Password</label><br>
-                        <input type="password" name="password" value="{{$student->password}}" class="form-control" placeholder="Enter Password">
-                        @error('password')
                             <span class="text-danger">{{$message}}</span><br>
                         @enderror
                         <br>

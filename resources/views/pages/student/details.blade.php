@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
+    <div class="container" style="cursor:default;">
       <br>
     <div class="main-body">
           <div class="row gutters-sm">
@@ -8,7 +8,7 @@
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Student Image" class="rounded-circle" width="150">
+                    <img src="{{asset('image/student_icon.png')}}" alt="Student" class="img-fluid img-thumbnail" width="150">
                     <div class="mt-3">
                       <h4 style = "text-transform:capitalize;">{{$student->name}}</h4>
                       <h6 class="text-secondary" style = "text-transform:capitalize;">Role: {{$student->utype}}</h6>
