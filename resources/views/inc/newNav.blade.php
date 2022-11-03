@@ -25,38 +25,23 @@
   </div>
 </div>
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-primary bg-primary">
+<nav class="navbar navbar-expand fixed-top navbar-light bg-light">
   <!-- Container wrapper -->
   <div class="container-fluid">
-    <!-- Toggle button -->
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-mdb-toggle="collapse"
-      data-mdb-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <i class="fas fa-bars"></i>
-    </button>
 
-    <!-- Collapsible wrapper -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Left links -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="btn btn-dark me-2" type="button" href="{{route('studentHome')}}">Home</a>
+          <a class="btn btn-outline-success me-2" type="button" href="{{route('studentHome')}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-dark me-2" type="button" href="{{route('studentList')}}">Student List</a>
+          <a class="btn btn-outline-success me-2" type="button" href="{{route('studentList')}}">Student List</a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-dark me-2" type="button" href="{{route('createStudent')}}">Add student</a>
+          <a class="btn btn-outline-success me-2" type="button" href="{{route('createStudent')}}">Add student</a>
         </li>
       </ul>
-      <!-- Left links -->
-    </div>
+      <!-- Left links ->
 
       <!-- Avatar -->
       @if(session()->has('id'))

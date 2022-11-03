@@ -48,6 +48,7 @@
   </head>
   <body class="p-3 m-0 border-0 bd-example" >
    @include('inc.newNav')
+   <br><br>
     <div class="container">
       @yield('content')
     </div>

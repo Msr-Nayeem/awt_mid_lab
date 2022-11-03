@@ -30,7 +30,6 @@
     </div>
   </div>
 </div>
-    <br>
     @if($errors->any())
         <div class="alert alert-success">
         <h6 style="color: red;">{{$errors->first()}}</h6>
