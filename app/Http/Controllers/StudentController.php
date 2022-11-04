@@ -266,7 +266,7 @@ class StudentController extends Controller
      public function changePassword(Request $request){
         $id = $request->id;
         $password = $request->password;
-        $student = Student::where('student_id', $id)->first();
+        $student = Student::where('id', $id)->first();
         $student->password = $request->password;
         $student->save();
 

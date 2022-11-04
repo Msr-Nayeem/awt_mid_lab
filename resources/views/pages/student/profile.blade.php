@@ -139,7 +139,7 @@
   function checkPassword(){
     var password = document.getElementById("password").value;
     var password_confirm = document.getElementById("password_confirm").value;
-    var id = document.getElementById("student_id").value;
+    var id = document.getElementById("id").value;
 
     if(password.length < 5){
         document.getElementById("password_error").innerHTML="password must be 5+ <br>";
