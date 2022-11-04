@@ -40,6 +40,7 @@
         <li class="nav-item">
           <a class="btn btn-outline-success me-2" type="button" href="{{route('createStudent')}}">Add student</a>
         </li>
+        
       </ul>
       <!-- Left links ->
 

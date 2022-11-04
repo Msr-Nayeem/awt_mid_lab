@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Models\District;
+use App\Models\City;
+use App\Models\Area;
 use App\Http\Controllers\CookieController;
 
 class StudentController extends Controller
@@ -69,44 +73,70 @@ class StudentController extends Controller
 
     // ADD STUDENT
     public function createStudent(){
-        return view('pages.student.createStudent');
+        $cities = City::select('city_name','id')->orderBy('city_name', 'asc')->get();
+        $data['cities'] = $cities;
+        return view('pages.student.createStudent', $data);
     }
+
+    public function getDistrict(Request $request)
+    {
+        $district = District::where("belongs_city",$request->city_id)->get();
+        
+        if (count($district) > 0) {
+            return response()->json($district);
+        }
+    }
+    public function getArea(Request $request)
+    {
+        $area = Area::where("belongs_district",$request->district_id)->get();
+        
+        if (count($area) > 0) {
+            return response()->json($area);
+        }
+    }
+   
+
     public function createStudentSubmitted(Request $request){
        // $name = $request->name;
-        //return $request;
-
+        // return $request;
+        
         $validate = $request->validate([
-            "name"=>"required|min:5|max:20",
+            "name"=>"required",
             "student_id"=>"required",
             'dob'=>'required',
-            'email'=>'email',
+            'email'=>'required',
             'password'=>'required',
             'phone'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/',
-            'address'=>'required'
+            'city'=>'required|not_in:0',
+            'district'=>'required|not_in:0',
+            'area'=>'required|not_in:0'
             
         ],
-        [
+         [
             'dob.required'=>"Select date of birth",
             'phone.required'=>"Phone Number needed",
             'password.required'=>"Password needed for login"
-            
-        ]
         
-        );
-
-        $student = new Student();
+        ] 
+         
+        ); 
         
-        $student->utype = $request->utype;
-        $student->name = $request->name;
-        $student->email = $request->email;
-        $student->password = $request->password;
-        $student->phone = $request->phone;
-        $student->address = $request->address;
-        $student->student_id = $request->student_id;
-        $student->dob = $request->dob;
-        $student->save();
+            $student = new Student();
+            $student->utype = $request->utype;
+            $student->name = $request->name;
+            $student->email = $request->email;
+            $student->password = $request->password;
+            $student->phone = $request->phone;
+            $student->student_id = $request->student_id;
+            $student->dob = $request->dob;
+            $student->country_id = $request->country;
+            $student->city_id = $request->city;
+            $student->district_id = $request->district;
+            $student->area_id = $request->area; 
+            $student->save();
+    
+            return redirect()->route('studentList');
 
-        return redirect()->route('studentList');
 
     }
     // DONE ADDING
@@ -123,6 +153,7 @@ class StudentController extends Controller
             );
             $students[] = (object)$student;
         } */
+        
         $student = Student::all();
         return view('pages.student.studentList')->with('students', $student);
     }
@@ -156,7 +187,6 @@ class StudentController extends Controller
          $student->name = $request->name;
          $student->email = $request->email;
          $student->phone = $request->phone;
-         $student->address = $request->address;
          $student->student_id = $request->student_id;
          $student->dob = $request->dob;
          $student->save(); 
@@ -177,12 +207,21 @@ class StudentController extends Controller
 
         //newProfile
         public function profile(){
-            $student = Student::where('id',session()->get("id"))->first();
+            
+            $student = Student::where('students.id', session()->get("id"))
+            ->join('cities','cities.id', '=', 'students.city_id')
+            ->join('districts','districts.id', '=', 'students.district_id')
+            ->join('areas','areas.id', '=', 'students.area_id')
+            ->first();
             return view('pages.student.profile')->with('student', $student);
     
         }
         public function details(Request $request){
-            $student = Student::where('id', $request->id)->first();
+            $student = Student::where('students.id', $request->id)
+            ->join('cities','cities.id', '=', 'students.city_id')
+            ->join('districts','districts.id', '=', 'students.district_id')
+            ->join('areas','areas.id', '=', 'students.area_id')
+            ->first();
             return view('pages.student.details')->with('student', $student);
     
         }
@@ -195,14 +234,13 @@ class StudentController extends Controller
 
 
         public function profileEditSubmitted(Request $request){
-        
+            
             $validate = $request->validate([
                 "name"=>"required|min:5",
                 "student_id"=>"required",
                 'dob'=>'required',
                 'email'=>'email',
-                'phone'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/',
-                'address'=>'required'
+                'phone'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/'
             ],
             [
                 'name.required'=>"name here",
@@ -216,7 +254,6 @@ class StudentController extends Controller
             $student->name = $request->name;
             $student->email = $request->email;
             $student->phone = $request->phone;
-            $student->address = $request->address;
             $student->student_id = $request->student_id;
             $student->dob = $request->dob;
             $student->save(); 

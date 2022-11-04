@@ -61,7 +61,7 @@
                       <h6 class="mb-0">Address</h6>
                     </div>
                     <div class="col-sm-3 text-secondary">
-                    {{$student->address}}
+                    {{$student->area_name}}, {{$student->district_name}}, {{$student->city_name}}.
                     </div>
                     <div class="col-sm-3">
                       <h6 class="mb-0">Date of Birth</h6>

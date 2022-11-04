@@ -65,3 +65,6 @@ Route::post('/profileEdit',[StudentController::class, 'profileEditSubmitted'])->
 
 Route::get('/changePassword/{id}/{password}',[StudentController::class, 'changePassword'])->name('changePassword')->middleware('loginCheck');
 
+//ADDRESS
+Route::get('/getDistrict/{city_id}', [StudentController::class, 'getDistrict'])->middleware('loginCheck');
+Route::get('/getArea/{district_id}', [StudentController::class, 'getArea']);
