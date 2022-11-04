@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <form action="{{route('profileEdit')}}" class="form-group" method="post" autocomplete="off">
+    <form action="{{route('studentUpdate')}}" class="form-group" method="post" autocomplete="off">
         {{csrf_field()}}
         <div class="container rounded bg-white mt-5 mb-5">
             <div class="row">
@@ -29,7 +29,7 @@
                         <br>
                     
                         <label class="labels">Student ID</label>
-                        <input type="text" class="form-control" name="student_id" value="{{$student->student_id}}" placeholder="Enter student ID">
+                        <input type="text" class="form-control" name="s_id" value="{{$student->s_id}}" placeholder="Enter student ID">
                         @error('student_id')
                             <span class="text-danger">{{$message}}</span><br>
                         @enderror

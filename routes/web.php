@@ -45,10 +45,10 @@ Route::get('/studentList',[StudentController::class, 'studentList'])->name('stud
 Route::get('/createStudent',[StudentController::class, 'createStudent'])->name('createStudent')->middleware('loginCheck');
 Route::post('/createStudent',[StudentController::class, 'createStudentSubmitted'])->name('createStudent');
 
-Route::get('/studentEdit/{id}',[StudentController::class, 'studentEdit'])->name('studentEdit')->middleware('loginCheck','adminCheck');
-Route::post('/studentEdit',[StudentController::class, 'studentEditSubmitted'])->name('studentEdit');
+Route::get('/studentUpdate/{sid}',[StudentController::class, 'studentEdit'])->name('studentUpdate')->middleware('loginCheck','adminCheck');
+Route::post('/studentUpdate',[StudentController::class, 'studentEditSubmitted'])->name('studentUpdate');
 
-Route::get('/studentDelete/{sid}',[StudentController::class, 'studentDelete'])->name('studentDelete');
+Route::get('/studentDelete/{id}',[StudentController::class, 'studentDelete'])->name('studentDelete');
 
 Route::get('/studentLogin',[StudentController::class, 'studentLogin'])->name('studentLogin');
 Route::post('/studentLogin',[StudentController::class, 'studentLoginCheck'])->name('studentLogin');
@@ -59,8 +59,8 @@ Route::get('/profile}',[StudentController::class, 'profile'])->name('profile')->
 Route::get('/details/{id}',[StudentController::class, 'details'])->name('details');
 
 
-Route::get('/profileEdit/{id}',[StudentController::class, 'profileEdit'])->name('profileEdit')->middleware('loginCheck');
-Route::post('/profileEdit',[StudentController::class, 'profileEditSubmitted'])->name('profileEdit')->middleware('loginCheck');
+Route::get('/profileUpdate/{sid}',[StudentController::class, 'profileEdit'])->name('profileUpdate')->middleware('loginCheck');
+Route::post('/profileUpdate',[StudentController::class, 'profileEditSubmitted'])->name('profileUpdate')->middleware('loginCheck');
 
 
 Route::get('/changePassword/{id}/{password}',[StudentController::class, 'changePassword'])->name('changePassword')->middleware('loginCheck');

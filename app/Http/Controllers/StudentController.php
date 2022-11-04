@@ -29,8 +29,6 @@ class StudentController extends Controller
         $p = $request->password;
         $password = $request->password;
 
-        $student = Student::where('email', $email)->first();
-
         if( $request->input('remember') == 'remember'){
             cookie()->queue(cookie(name: 'email', value: $email, minutes: 60*7*24));
             cookie()->queue(cookie(name: 'password', value: $p, minutes: 60*7*24));    
@@ -40,6 +38,7 @@ class StudentController extends Controller
             cookie()->queue(cookie(name: 'password', value: '', minutes: -3600));  
         }
 
+        $student = Student::where('email', $email)->first();
         if($student){
             $student = Student::where('email', $email)
             ->where('password', $password)->first();
@@ -73,7 +72,7 @@ class StudentController extends Controller
 
     // ADD STUDENT
     public function createStudent(){
-        $cities = City::select('city_name','id')->orderBy('city_name', 'asc')->get();
+        $cities = City::select('city_name','id')->get();
         $data['cities'] = $cities;
         return view('pages.student.createStudent', $data);
     }
@@ -102,7 +101,7 @@ class StudentController extends Controller
         
         $validate = $request->validate([
             "name"=>"required",
-            "student_id"=>"required",
+            "s_id"=>"required",
             'dob'=>'required',
             'email'=>'required',
             'password'=>'required',
@@ -127,7 +126,7 @@ class StudentController extends Controller
             $student->email = $request->email;
             $student->password = $request->password;
             $student->phone = $request->phone;
-            $student->student_id = $request->student_id;
+            $student->s_id = $request->s_id;
             $student->dob = $request->dob;
             $student->country_id = $request->country;
             $student->city_id = $request->city;
@@ -161,7 +160,8 @@ class StudentController extends Controller
 
     // EDIT STUDENT
     public function studentEdit(Request $request){
-        $student = Student::where('id', $request->id)->first();
+        
+        $student = Student::where('id', $request->sid)->first();
         return view('pages.student.studentEdit')->with('student', $student);
 
     }
@@ -169,11 +169,11 @@ class StudentController extends Controller
 
          $validate = $request->validate([
              "name"=>"required|min:5",
-             "student_id"=>"required",
+             "s_id"=>"required",
              'dob'=>'required',
              'email'=>'email',
-             'phone'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/',
-             'address'=>'required'
+             'phone'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/'
+             
          ],
          [
              'name.required'=>"name here",
@@ -187,7 +187,7 @@ class StudentController extends Controller
          $student->name = $request->name;
          $student->email = $request->email;
          $student->phone = $request->phone;
-         $student->student_id = $request->student_id;
+         $student->s_id = $request->s_id;
          $student->dob = $request->dob;
          $student->save(); 
 
@@ -197,7 +197,7 @@ class StudentController extends Controller
 
         //Delete Student
         public function studentDelete(Request $request){
-            $student = Student::where('id', $request->sid)->first();
+            $student = Student::where('id', $request->id)->first();
             $student->delete();
             return redirect()->route('studentList');
         }
@@ -205,7 +205,7 @@ class StudentController extends Controller
 
 
 
-        //newProfile
+        //Profile
         public function profile(){
             
             $student = Student::where('students.id', session()->get("id"))
@@ -227,7 +227,8 @@ class StudentController extends Controller
         }
 
         public function profileEdit(Request $request){
-            $student = Student::where('id', $request->id)->first();
+            
+            $student = Student::where('id', $request->sid)->first();
             return view('pages.student.profileEdit')->with('student', $student);
     
         }
@@ -235,9 +236,10 @@ class StudentController extends Controller
 
         public function profileEditSubmitted(Request $request){
             
+            
             $validate = $request->validate([
                 "name"=>"required|min:5",
-                "student_id"=>"required",
+                "s_id"=>"required",
                 'dob'=>'required',
                 'email'=>'email',
                 'phone'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/'
@@ -249,15 +251,12 @@ class StudentController extends Controller
             ]
             
             );
-           
-            $student = Student::where('id', $request->id)->first();
-            $student->name = $request->name;
-            $student->email = $request->email;
-            $student->phone = $request->phone;
-            $student->student_id = $request->student_id;
-            $student->dob = $request->dob;
-            $student->save(); 
-   
+
+            
+           $student= Student::where('id',$request->id)->first();
+            
+            $student->name= $request->name;
+            $student->save();
             return redirect()->route('profile'); 
            }
 
@@ -267,7 +266,7 @@ class StudentController extends Controller
      public function changePassword(Request $request){
         $id = $request->id;
         $password = $request->password;
-        $student = Student::where('id', $id)->first();
+        $student = Student::where('student_id', $id)->first();
         $student->password = $request->password;
         $student->save();
 

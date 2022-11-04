@@ -16,8 +16,8 @@
                         <br>
                     
                         <label class="labels">Student ID</label>
-                        <input type="text" class="form-control" name="student_id" value="{{old('student_id')}}" placeholder="Enter student ID">
-                        @error('student_id')
+                        <input type="text" class="form-control" name="s_id" value="{{old('student_id')}}" placeholder="Enter student ID">
+                        @error('s_id')
                             <span class="text-danger">{{$message}}</span><br>
                         @enderror
                         <br>

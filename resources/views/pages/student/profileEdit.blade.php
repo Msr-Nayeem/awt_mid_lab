@@ -20,10 +20,11 @@
             <div class="col-md-8">
               <div class="card mb-3">
                 <div class="card-body">
-                <form action="{{route('profileEdit')}}" class="form-group" method="post" autocomplete="off" style="cursor:default;">
+                <form action="{{route('profileUpdate')}}" class="form-group" method="post" autocomplete="off" style="cursor:default;">
                      {{csrf_field()}}
+                     <input type="text" class="form-control" name="id" value="{{$student->id}}" hidden>
+
                       <div class="row">
-                      <input type="text" class="form-control" name="id" value="{{$student->id}}" hidden>
                       <div class="col-sm-3">
                         <h6 class="mb-0">Full Name :</h6>
                       </div>
@@ -35,7 +36,7 @@
                         <h6 class="mb-0">Student ID :</h6>
                       </div>
                       <div class="col-sm-3 text-secondary">
-                      <input type="text" class="form-control" name="student_id" value="{{$student->student_id}}" placeholder="Student ID">
+                      <input type="text" class="form-control" name="s_id" value="{{$student->s_id}}" placeholder="Student ID">
                       </div>
                     </div>
                     <hr>
@@ -63,7 +64,7 @@
                         <h6 class="mb-0">Address</h6>
                       </div>
                       <div class="col-sm-3 text-secondary">
-                      <input type="text" class="form-control" name="address" value="{{$student->address}}" placeholder="Enter full name">
+                      <input type="text" class="form-control" name="address" value="" placeholder="">
                       </div>
                       <div class="col-sm-3">
                         <h6 class="mb-0">Date of Birth</h6>

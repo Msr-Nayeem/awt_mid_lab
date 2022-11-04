@@ -25,7 +25,6 @@
         <button type="button" class="btn btn-secondary btn-sm" data-mdb-dismiss="modal">Cancel</button>
         <a type="button" id="myAnchor" class="btn btn-danger btn-sm" href="">Okay</a>
       </div>
-      </form>
       @endif
     </div>
   </div>
@@ -45,7 +44,7 @@
         @foreach($students as $student)
         <tr>
             <td><a href="/details/{{$student->id}}">{{$student->name}}</a></td>
-            <td style="cursor:default;">{{$student->student_id}}</td>
+            <td style="cursor:default;">{{$student->id}}</td>
             <td><button  id="{{$student->name}}" name="edit" onclick="alertFunction(this)" class="btn btn-danger btn-sm" value="{{$student->id}}">EDIT</button></td>
             <td><button  id="{{$student->name}}" name="delete" onclick="alertFunction(this)" class="btn btn-danger btn-sm" value="{{$student->id}}">Delete</button></td>
         </tr>
@@ -72,7 +71,7 @@
     }
     else{
       $('#alertModal').modal('show');
-      document.getElementById("myAnchor").href ="/studentEdit/"+sid;
+      document.getElementById("myAnchor").href ="/studentUpdate/"+sid;
       document.getElementById("modalTitle").innerHTML="Edit Confirmation !";
       document.getElementById("alertMsg").innerHTML="Are You sure to edit?<br>You are going to edit: ("+sname+")";
       document.getElementById("myAnchor").innerHTML="Yes Edit";

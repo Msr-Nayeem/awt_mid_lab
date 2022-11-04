@@ -24,7 +24,7 @@
       
 
         <div class="modal-body">
-          <input type="text" id="id"  class="form-control form-icon-trailing" value="{{$student->id}}" hidden />
+          <input type="text" id="student_id"  class="form-control form-icon-trailing" value="{{$student->id}}" hidden />
           <div class="form-outline">
               
               <input type="password" id="password"  class="form-control form-icon-trailing">
@@ -83,7 +83,7 @@
                       <h6 class="mb-0">Student ID :</h6>
                     </div>
                     <div class="col-sm-3">
-                      <h6 class="mb-0">{{$student->student_id}}</h6>
+                      <h6 class="mb-0">{{$student->s_id}}</h6>
                     </div>
                   </div>
                   <hr>
@@ -139,7 +139,7 @@
   function checkPassword(){
     var password = document.getElementById("password").value;
     var password_confirm = document.getElementById("password_confirm").value;
-    var id = document.getElementById("id").value;
+    var id = document.getElementById("student_id").value;
 
     if(password.length < 5){
         document.getElementById("password_error").innerHTML="password must be 5+ <br>";
