@@ -13,7 +13,8 @@
             <input type="checkbox" class="form-check-input" name="remember" value="remember" @if (Cookie::get('email') !== null){ checked } @endif>
             <label class="form-check-label">Remember me</label> <br><br>
             
-            <input type="submit" class="btn btn-primary" value="Login"><br><br>
+            <input type="submit" class="btn btn-primary" value="Login">
+           
 
             @if($errors->any())
                 <div class="alert alert-success" style="height: 100px; width:190px;">

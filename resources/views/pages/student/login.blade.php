@@ -26,6 +26,7 @@
                 <label class="form-check-label">Remember me</label> <br><br>
             </div>
             <button type="submit" class="log-in" name="log-in">Log In</button>
+            <button type="button" class="log-in" id="sign-up" style="margin-left: 3%;" onclick="newAccount()">Sign Up</button>
             </form>
             @if($errors->any())
                 <div class="err">
@@ -33,5 +34,12 @@
                 </div>
             @endif
     </div>
+
+    <script>
+        function newAccount(){
+            location.href="/createUser";
+        }
+
+</script>
 </body>
 </html>

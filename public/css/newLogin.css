@@ -73,9 +73,9 @@ input#password{
 }
 .log-in{
   margin-top: 5%;
-  margin-left: 30%;
-  width: 35%;
-  height: 4%;
+  margin-left: 18%;
+  width: 30%;
+  height: 5%;
   border-radius: 25px;
   border: 1px solid rgba(0,0,0,0.4);
   background-color: lightgreen;
@@ -84,7 +84,6 @@ input#password{
   cursor: pointer;
   opacity: 0.8;
 }
-
 
 .pass{
   margin-top: 8%;

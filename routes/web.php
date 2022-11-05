@@ -3,6 +3,7 @@
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,9 @@ Route::get('/user/{id}', function($id) {
 //Student
 Route::get('/studentHome',[StudentController::class, 'studentHome'])->name('studentHome')->middleware('loginCheck');
 Route::get('/studentList',[StudentController::class, 'studentList'])->name('studentList')->middleware('loginCheck');
+
+Route::get('/createUser',[CustomerController::class, 'index'])->name('createUser');
+Route::post('/createUser',[CustomerController::class, 'create'])->name('createUser');
 
 Route::get('/createStudent',[StudentController::class, 'createStudent'])->name('createStudent')->middleware('loginCheck');
 Route::post('/createStudent',[StudentController::class, 'createStudentSubmitted'])->name('createStudent');
