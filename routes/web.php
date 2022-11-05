@@ -4,6 +4,7 @@ use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\RoomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,3 +73,11 @@ Route::get('/changePassword/{id}/{password}',[StudentController::class, 'changeP
 //ADDRESS
 Route::get('/getDistrict/{city_id}', [StudentController::class, 'getDistrict'])->middleware('loginCheck');
 Route::get('/getArea/{district_id}', [StudentController::class, 'getArea']);
+
+//ROOM
+Route::get('/room', [RoomController::class, 'index'])->name('room')->middleware('loginCheck');
+
+Route::get('/addRoom', [RoomController::class, 'newRoom'])->name('addRoom')->middleware('adminCheck');
+Route::post('/addRoom', [RoomController::class, 'create'])->name('addRoom');
+
+

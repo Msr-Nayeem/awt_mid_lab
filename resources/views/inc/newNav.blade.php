@@ -40,6 +40,12 @@
         <li class="nav-item">
           <a class="btn btn-outline-success me-2" type="button" href="{{route('createStudent')}}">Add New User</a>
         </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-success me-2" type="button" href="{{route('room')}}">Room</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-success me-2" type="button" href="{{route('addRoom')}}">Add Room</a>
+        </li>
         
       </ul>
       <!-- Left links ->

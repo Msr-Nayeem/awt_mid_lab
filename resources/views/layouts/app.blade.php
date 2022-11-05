@@ -6,10 +6,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    <!-- Font Awesome -->
     <link href="{{asset('css/all.min.css')}}" rel="stylesheet"/>
-    <!-- MDB -->
     <link href="{{asset('css/mdb.min.css')}}" rel="stylesheet"/>
+    
 
     <title>Student</title>
     
@@ -51,10 +50,11 @@
       @yield('content')
     </div>
     
-   
+    <!-- MDB -->
+    <script type="text/javascript" src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
     <!-- MDB -->
     <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
+    
     @yield('scriptList')
   </body>
 </html>

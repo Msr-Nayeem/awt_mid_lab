@@ -49,11 +49,12 @@
             <td><button  id="{{$student->name}}" name="delete" onclick="alertFunction(this)" class="btn btn-danger btn-sm" value="{{$student->id}}">Delete</button></td>
         </tr>
         @endforeach
+        <tfoot>
+            <tr>
+                <td colspan="4" style="text-align: center">Total Receptionist: {{count($students);}} </td>
+            </tr>
+        </tfoot>
     </table>
-
-
-
-
 @endsection
 
 @section('scriptList')
