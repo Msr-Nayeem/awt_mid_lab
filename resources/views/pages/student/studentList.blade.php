@@ -37,7 +37,7 @@
     <table class="table table-bordered">
         <tr style="cursor:default;">
             <th style="text-align: left">Name</th>
-            <th>Student ID</th>
+            <th>Receptionist ID</th>
             <th colspan="2">Action</th>
             
         </tr>

@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+
+use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 use App\Models\Customer;
-use App\Http\Requests\StoreCustomerRequest;
-use App\Http\Requests\UpdateCustomerRequest;
+
+use App\Http\Controllers\CookieController;
+
 
 class CustomerController extends Controller
 {
@@ -25,19 +30,14 @@ class CustomerController extends Controller
      */
     public function create(Request $request)
     {
-
         
-        $customer = new Customer();
-        $customer->utype = $request->utype;
+        /* $customer = new Customer();
         $customer->name = $request->name;
         $customer->email = $request->email;
         $customer->password = $request->password;
         $customer->phone = $request->phone;
-        $customer->dob = $request->dob; 
-        $customer->save();
-
-        return redirect()->route('login');
-
+        $customer->save(); */
+        return redirect()->back()->with('alert','Done');
 
     }
 

@@ -35,10 +35,10 @@
           <a class="btn btn-outline-success me-2" type="button" href="{{route('studentHome')}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-outline-success me-2" type="button" href="{{route('studentList')}}">Student List</a>
+          <a class="btn btn-outline-success me-2" type="button" href="{{route('studentList')}}">Receptionist List</a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-outline-success me-2" type="button" href="{{route('createStudent')}}">Add student</a>
+          <a class="btn btn-outline-success me-2" type="button" href="{{route('createStudent')}}">Add New User</a>
         </li>
         
       </ul>

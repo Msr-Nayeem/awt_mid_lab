@@ -15,13 +15,6 @@
                         @enderror 
                         <br>
                     
-                        <label class="labels">Student ID</label>
-                        <input type="text" class="form-control" name="s_id" value="{{old('student_id')}}" placeholder="Enter student ID">
-                        @error('s_id')
-                            <span class="text-danger">{{$message}}</span><br>
-                        @enderror
-                        <br>
-                    
                         <label class="labels">Email</label>
                         <input type="text" class="form-control" name="email"  value="{{old('email')}}" placeholder="enter email"> 
                         @error('email')
@@ -56,8 +49,8 @@
                         <label class="labels">Register As</label>
                         <select class="form-control" name="utype" style="cursor:pointer;">
                             <option value="0">Select Type</option>
-                            <option value="admin">Admin</option>
-                            <option value="teacher">Teacher</option>
+                            <option value="receptionist">Receptionist</option>
+                            <option value="user">User</option>
                         </select>
                         @error('utype')
                             <span class="text-danger">{{$message}}</span><br>

@@ -101,7 +101,6 @@ class StudentController extends Controller
         
         $validate = $request->validate([
             "name"=>"required",
-            "s_id"=>"required",
             'dob'=>'required',
             'email'=>'required',
             'password'=>'required',
@@ -126,7 +125,6 @@ class StudentController extends Controller
             $student->email = $request->email;
             $student->password = $request->password;
             $student->phone = $request->phone;
-            $student->s_id = $request->s_id;
             $student->dob = $request->dob;
             $student->country_id = $request->country;
             $student->city_id = $request->city;
@@ -169,7 +167,6 @@ class StudentController extends Controller
 
          $validate = $request->validate([
              "name"=>"required|min:5",
-             "s_id"=>"required",
              'dob'=>'required',
              'email'=>'email',
              'phone'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/'
@@ -187,7 +184,6 @@ class StudentController extends Controller
          $student->name = $request->name;
          $student->email = $request->email;
          $student->phone = $request->phone;
-         $student->s_id = $request->s_id;
          $student->dob = $request->dob;
          $student->save(); 
 
@@ -239,7 +235,6 @@ class StudentController extends Controller
             
             $validate = $request->validate([
                 "name"=>"required|min:5",
-                "s_id"=>"required",
                 'dob'=>'required',
                 'email'=>'email',
                 'phone'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/'
@@ -270,7 +265,7 @@ class StudentController extends Controller
         $student->password = $request->password;
         $student->save();
 
-         return redirect()->back()->withErrors(['password changed successfully']);
+        return redirect()->back()->with('passChanged','Password Changed Seccessfully');
 
     }
 

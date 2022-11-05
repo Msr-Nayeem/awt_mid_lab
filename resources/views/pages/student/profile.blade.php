@@ -1,11 +1,6 @@
 @extends('layouts.app')
 @section('content')
-@if($errors->any())
-        <br>
-        <div class="alert alert-success">
-        <h6 style="color: red;">{{$errors->first()}}</h6>
-        </div>
-@endif
+
 <div
   class="modal fade"
   id="changePassword"
@@ -61,7 +56,7 @@
                       <h4 style = "text-transform:capitalize;">{{$student->name}}</h4>
                       <h6 class="text-secondary" style = "text-transform:capitalize;">Role: {{$student->utype}}</h6>
                       <button id="" onclick="alertFunction(this)" class="btn btn-primary btn-rounded" value="{{$student->id}}">Change Password</button>
-                      <a class="btn btn-primary btn-rounded" style="margin-left:17px;" href="/profileEdit/{{$student->id}}">Edit/Update </a>
+                      <a class="btn btn-primary btn-rounded" style="margin-left:17px;" href="/profileUpdate/{{$student->id}}">Edit/Update </a>
                     </div>
                   </div>
                 </div>
@@ -80,10 +75,10 @@
                     </div>
 
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Student ID :</h6>
+                      <h6 class="mb-0">{{$student->utype}} ID :</h6>
                     </div>
                     <div class="col-sm-3">
-                      <h6 class="mb-0">{{$student->s_id}}</h6>
+                      <h6 class="mb-0">{{$student->id}}</h6>
                     </div>
                   </div>
                   <hr>
@@ -131,15 +126,22 @@
 
 @section('scriptList')
 <script>  
+ var msg = '{{Session::get('passChanged')}}';
+    var exist = '{{Session::has('passChanged')}}';
+    if(exist){
+      alert(msg);
+    }
+
   function alertFunction(btn){   
     $('#changePassword').modal('show');
     document.getElementById("password_error").innerHTML="<br>";
     document.getElementById("password_errorr").innerHTML="<br>";
   }
+
   function checkPassword(){
     var password = document.getElementById("password").value;
     var password_confirm = document.getElementById("password_confirm").value;
-    var id = document.getElementById("id").value;
+    var id = document.getElementById("student_id").value;
 
     if(password.length < 5){
         document.getElementById("password_error").innerHTML="password must be 5+ <br>";

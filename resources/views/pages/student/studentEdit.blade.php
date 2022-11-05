@@ -28,26 +28,13 @@
                         @enderror 
                         <br>
                     
-                        <label class="labels">Student ID</label>
-                        <input type="text" class="form-control" name="s_id" value="{{$student->s_id}}" placeholder="Enter student ID">
-                        @error('student_id')
-                            <span class="text-danger">{{$message}}</span><br>
-                        @enderror
-                        <br>
-                    
                         <label class="labels">Email</label>
                         <input type="text" class="form-control" name="email" value="{{$student->email}}" placeholder="enter email"> 
                         @error('email')
                             <span class="text-danger">{{$message}}</span><br>
                         @enderror
                         <br>
-                
-                        <label class="labels">Address</label>
-                        <input type="text" class="form-control" name="address" value="{{$student->address}}" placeholder="Enter address">
-                        @error('address')
-                            <span class="text-danger">{{$message}}</span><br>
-                        @enderror
-                        <br>
+        
                     </div>
                     <div class="col-md-6">
                         <label class="labels">Mobile Number</label>

@@ -25,27 +25,26 @@
                      <input type="text" class="form-control" name="id" value="{{$student->id}}" hidden>
 
                       <div class="row">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">Full Name :</h6>
-                      </div>
-                      <div class="col-sm-3 text-secondary">
-                      <input type="text" class="form-control" name="name" value="{{$student->name}}" placeholder="Enter full name">
-                      </div>
-
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">Student ID :</h6>
-                      </div>
-                      <div class="col-sm-3 text-secondary">
-                      <input type="text" class="form-control" name="s_id" value="{{$student->s_id}}" placeholder="Student ID">
-                      </div>
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Full Name :</h6>
+                        </div>
+                        <div class="col-sm-3 text-secondary">
+                        <input type="text" class="form-control" name="name" value="{{$student->name}}" placeholder="Enter full name">
+                        </div>
+                        <div class="col-sm-3">
+                        <h6 class="mb-0">Date of Birth</h6>
+                        </div>
+                        <div class="col-sm-3 text-secondary">
+                        <input type="date" class="form-control" name="dob" value="{{$student->dob}}">
+                        </div>
                     </div>
                     <hr>
 
                     <div class="row">
-                      <div class="col-sm-3">
+                      <div class="col-sm-2">
                         <h6 class="mb-0">Email :</h6>
                       </div>
-                      <div class="col-sm-3 text-secondary">
+                      <div class="col-sm-4 text-secondary">
                       <input type="email" class="form-control" name="email" value="{{$student->email}}" placeholder="Valid email">
                       </div>
 
@@ -57,22 +56,7 @@
                       </div>
 
                     </div>
-                    <hr>
-
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">Address</h6>
-                      </div>
-                      <div class="col-sm-3 text-secondary">
-                      <input type="text" class="form-control" name="address" value="" placeholder="">
-                      </div>
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">Date of Birth</h6>
-                      </div>
-                      <div class="col-sm-3 text-secondary">
-                      <input type="date" class="form-control" name="dob" value="{{$student->dob}}">
-                      </div>
-                    </div>
+                    
                     <hr>
                     <div class="row">
                       <div class="col-sm-12">
