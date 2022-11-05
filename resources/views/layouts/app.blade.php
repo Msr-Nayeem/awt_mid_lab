@@ -8,6 +8,7 @@
     
     <link href="{{asset('css/all.min.css')}}" rel="stylesheet"/>
     <link href="{{asset('css/mdb.min.css')}}" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{asset('css/createUser.css')}}">
     
 
     <title>Student</title>

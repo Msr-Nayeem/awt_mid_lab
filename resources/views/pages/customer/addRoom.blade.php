@@ -25,8 +25,7 @@
 
             <div class="form-outline mb-4">
             <label class="form-label">Rent(BDT)</label>
-                <input type="number" id="rent" class="form-control form-control-lg" name="rent" value="1000"/>
-                
+                <input type="number" id="rent" class="form-control form-control-lg" name="rent" value="1000"/>   
             </div>
 
                 

@@ -81,3 +81,7 @@ Route::get('/addRoom', [RoomController::class, 'newRoom'])->name('addRoom')->mid
 Route::post('/addRoom', [RoomController::class, 'create'])->name('addRoom');
 
 
+
+Route::post('/bookings', [RoomController::class, 'bookings'])->name('bookings')->middleware('loginCheck');
+
+

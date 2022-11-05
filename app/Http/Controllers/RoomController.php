@@ -33,11 +33,21 @@ class RoomController extends Controller
      */
     public function create(Request $request)
     {
-         $room = new Room();
+        
+        $room = new Room();
         $room->cetegory = $request->cetegory;
         $room->rent_per_day = $request->rent;
         $room->save(); 
         return redirect()->back()->withErrors(['Room listed !']);
+    }
+    public function bookings(Request $request)
+    {
+         
+         $room = Room::where('id', $request->id)->first();
+         $room->status = "booked";
+         $room->booked_for = $request->customer_id;
+         $room->save();
+         return redirect()->back()->withErrors(['Bookings Done !']);
     }
 
     /**
