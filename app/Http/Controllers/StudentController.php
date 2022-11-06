@@ -17,9 +17,9 @@ class StudentController extends Controller
     
     public function studentHome(){
         
-        $student = Student::where('id', session()->get("id"))->first();
-        session()->put('log', $student->id);
-        return view('pages.student.studentHome')->with('student', $student);
+        $students = Student::select('id','name')->get();
+        /* session()->put('log', $student->id); */
+        return view('pages.student.studentHome')->with('students', $students);
     }
     public function studentLogin(){ 
         return view('pages.student.login');

@@ -77,11 +77,13 @@ Route::get('/getArea/{district_id}', [StudentController::class, 'getArea']);
 //ROOM
 Route::get('/room', [RoomController::class, 'index'])->name('room')->middleware('loginCheck');
 
+Route::get('/getRoom/{cetegory}', [RoomController::class, 'getRoom'])->name('getRoom')->middleware('loginCheck');
+Route::get('/getRent/{id}', [RoomController::class, 'getRent'])->name('getRent')->middleware('loginCheck');
+
 Route::get('/addRoom', [RoomController::class, 'newRoom'])->name('addRoom')->middleware('adminCheck');
 Route::post('/addRoom', [RoomController::class, 'create'])->name('addRoom');
 
-
-
 Route::post('/bookings', [RoomController::class, 'bookings'])->name('bookings')->middleware('loginCheck');
+
 
 

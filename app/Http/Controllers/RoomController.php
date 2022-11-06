@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
-
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
+
+use DateTime;
 use App\Models\Room;
+
+
 
 class RoomController extends Controller
 {
@@ -19,6 +22,24 @@ class RoomController extends Controller
     {
         $room_datas = Room::all();
         return view('pages.customer.room', compact('room_datas'));
+    }
+    public function getRoom(Request $request)
+    {
+        $room = Room :: where('cetegory', $request->cetegory)
+        ->where('status', "available")
+        ->get();
+        if (count($room) > 0) {
+            return response()->json($room);
+        }
+        
+    }
+    public function getRent(Request $request)
+    {
+        $rent = Room :: select('rent_per_day')
+        ->where('id', $request->id)->get();
+        
+        return response()->json($rent);
+        
     }
 
     public function newRoom()
@@ -42,14 +63,13 @@ class RoomController extends Controller
     }
     public function bookings(Request $request)
     {
-         
-         $room = Room::where('id', $request->id)->first();
+         $room = Room::where('id', $request->room_id)->first();
          $room->status = "booked";
          $room->booked_for = $request->customer_id;
          $room->save();
          return redirect()->back()->withErrors(['Bookings Done !']);
     }
-
+ 
     /**
      * Store a newly created resource in storage.
      *

@@ -52,9 +52,10 @@
     </div>
     
     <!-- MDB -->
-    <script type="text/javascript" src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
+    
     <!-- MDB -->
     <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
     
     @yield('scriptList')
   </body>
