@@ -41,8 +41,9 @@ Route::get('/user/{id}', function($id) {
 });
 
 //Student
-Route::get('/studentHome',[StudentController::class, 'studentHome'])->name('studentHome')->middleware('loginCheck');
-Route::get('/studentList',[StudentController::class, 'studentList'])->name('studentList')->middleware('loginCheck');
+Route::get('/home',[StudentController::class, 'home'])->name('home')->middleware('loginCheck');
+
+Route::get('/receptionistList',[StudentController::class, 'studentList'])->name('studentList')->middleware('loginCheck');
 
 
 Route::get('/createUser',[CustomerController::class, 'index'])->name('createUser');
@@ -76,6 +77,7 @@ Route::get('/getDistrict/{city_id}', [StudentController::class, 'getDistrict'])-
 Route::get('/getArea/{district_id}', [StudentController::class, 'getArea']);
 
 //ROOM
+Route::get('/booking',[StudentController::class, 'booking'])->name('booking')->middleware('loginCheck');
 Route::get('/room', [RoomController::class, 'index'])->name('room')->middleware('loginCheck');
 
 Route::get('/getRoom/{cetegory}', [RoomController::class, 'getRoom'])->name('getRoom')->middleware('loginCheck');
@@ -88,6 +90,7 @@ Route::post('/bookings', [RoomController::class, 'bookings'])->name('bookings')-
 Route::get('/makeAvailable/{id}',[RoomController::class, 'makeAvailable'])->name('makeAvailable')->middleware('loginCheck');
 
 Route::get('/guestList',[RoomController::class, 'guestList'])->name('guestList')->middleware('loginCheck');
+
 
 
 

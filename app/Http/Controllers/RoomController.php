@@ -108,7 +108,7 @@ class RoomController extends Controller
         $guest = Student::where("utype", "user")->get();
         return view('pages.customer.guestList')->with('guest', $guest);
     }
- 
+  
     /**
      * Store a newly created resource in storage.
      *

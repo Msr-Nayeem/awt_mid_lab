@@ -32,7 +32,10 @@
       <!-- Left links -->
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="btn btn-outline-success me-2" type="button" href="{{route('studentHome')}}">Home</a>
+          <a class="btn btn-outline-success me-2" type="button" href="{{route('home')}}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-success me-2" type="button" href="{{route('booking')}}">Booking</a>
         </li>
         <li class="nav-item">
           <a class="btn btn-outline-success me-2" type="button" href="{{route('studentList')}}">Receptionist List</a>

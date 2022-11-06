@@ -15,11 +15,17 @@ use App\Http\Controllers\CookieController;
 class StudentController extends Controller
 {
     
-    public function studentHome(){
+    public function home(){
+
+        $students = Student::where('id', session()->get('id'))->get();
+        
+        return view('pages.student.home', compact('students'));
+    }
+    public function booking(){
         
         $students = Student::select('id','name')->get();
         /* session()->put('log', $student->id); */
-        return view('pages.student.studentHome')->with('students', $students);
+        return view('pages.customer.booking')->with('students', $students);
     }
     public function studentLogin(){ 
         return view('pages.student.login');
@@ -50,7 +56,7 @@ class StudentController extends Controller
                      $request->session()->forget('url');
                      return redirect()->route($url);
                  }
-                 return redirect()->route('studentHome'); 
+                 return redirect()->route('home'); 
             }
 
             else{
@@ -132,7 +138,7 @@ class StudentController extends Controller
             $student->area_id = $request->area; 
             $student->save();
     
-            return redirect()->route('studentList');
+            return redirect()->route('receptionistList');
 
 
     }
@@ -187,7 +193,7 @@ class StudentController extends Controller
          $student->dob = $request->dob;
          $student->save(); 
 
-         return redirect()->route('studentList'); 
+         return redirect()->route('receptionistList'); 
         }
          // EDIT STUDENT DONE
 
@@ -195,7 +201,7 @@ class StudentController extends Controller
         public function studentDelete(Request $request){
             $student = Student::where('id', $request->id)->first();
             $student->delete();
-            return redirect()->route('studentList');
+            return redirect()->route('receptionistList');
         }
 
 
@@ -271,8 +277,5 @@ class StudentController extends Controller
         return redirect()->back()->with('passChanged','Password Changed Seccessfully');
 
     }
-
-
-    
            
 }
