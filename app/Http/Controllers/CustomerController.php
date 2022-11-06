@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use App\Models\Student;
 
 use App\Http\Controllers\CookieController;
 
@@ -31,12 +32,13 @@ class CustomerController extends Controller
     public function create(Request $request)
     {
         
-        /* $customer = new Customer();
+         $customer = new Student();
+        $customer->utype = "admin";
         $customer->name = $request->name;
         $customer->email = $request->email;
         $customer->password = $request->password;
         $customer->phone = $request->phone;
-        $customer->save(); */
+        $customer->save(); 
         return redirect()->back()->with('alert','Done');
 
     }

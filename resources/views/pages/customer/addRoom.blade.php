@@ -39,7 +39,7 @@
             </div>
             @if($errors->any())
                   <div class="err">
-                  <h4>{{$errors->first()}}</h4>
+                  <h4 style="text-align: center;">{{$errors->first()}}</h4>
                   </div>
                 @endif
           </div>

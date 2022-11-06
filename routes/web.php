@@ -44,6 +44,7 @@ Route::get('/user/{id}', function($id) {
 Route::get('/studentHome',[StudentController::class, 'studentHome'])->name('studentHome')->middleware('loginCheck');
 Route::get('/studentList',[StudentController::class, 'studentList'])->name('studentList')->middleware('loginCheck');
 
+
 Route::get('/createUser',[CustomerController::class, 'index'])->name('createUser');
 Route::post('/createUser',[CustomerController::class, 'create'])->name('createUser');
 
@@ -85,6 +86,8 @@ Route::post('/addRoom', [RoomController::class, 'create'])->name('addRoom');
 
 Route::post('/bookings', [RoomController::class, 'bookings'])->name('bookings')->middleware('loginCheck');
 Route::get('/makeAvailable/{id}',[RoomController::class, 'makeAvailable'])->name('makeAvailable')->middleware('loginCheck');
+
+Route::get('/guestList',[RoomController::class, 'guestList'])->name('guestList')->middleware('loginCheck');
 
 
 

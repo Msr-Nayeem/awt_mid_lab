@@ -223,7 +223,7 @@ class StudentController extends Controller
         }
 
         public function profileEdit(Request $request){
-            
+
             $student = Student::where('id', $request->sid)->first();
             return view('pages.student.profileEdit')->with('student', $student);
     
@@ -251,6 +251,9 @@ class StudentController extends Controller
            $student= Student::where('id',$request->id)->first();
             
             $student->name= $request->name;
+            $student->email= $request->email;
+            $student->phone= $request->phone;
+            $student->dob= $request->dob;
             $student->save();
             return redirect()->route('profile'); 
            }

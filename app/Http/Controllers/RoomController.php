@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
@@ -74,15 +75,16 @@ class RoomController extends Controller
     }
     public function bookings(Request $request)
     {
-        $validate = $request->validate([
-            "customer_id" => "required"
-            
-        ],
-         [
-            'customer_id.required'=>"Select all the fields",
         
-        ] 
-         
+        $validate = $request->validate([
+            "customer_id" => "required|not_in:0",
+            "room_id" => "required|not_in:0",
+            "period" => "required",
+            "cetegory" => "required|not_in:0",
+            "rent_text" => "required|"
+
+            
+        ]
         ); 
 
          $room = Room::where('id', $request->room_id)->first();
@@ -90,6 +92,21 @@ class RoomController extends Controller
          $room->booked_for = $request->customer_id;
          $room->save();
          return redirect()->back()->withErrors(['Bookings Done !']);
+    }
+
+    public function guestList(){
+        /* $student = array();
+        for($i=1; $i<=10; $i++){
+            $student = array(
+                "name"=>"Student ".($i),
+                "id"=>"sid".($i),
+                "dob"=>"2000-".($i)."-01"
+            );
+            $students[] = (object)$student;
+        } */
+        
+        $guest = Student::where("utype", "user")->get();
+        return view('pages.customer.guestList')->with('guest', $guest);
     }
  
     /**
