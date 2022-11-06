@@ -26,7 +26,7 @@ class RoomController extends Controller
     public function getRoom(Request $request)
     {
         $room = Room :: where('cetegory', $request->cetegory)
-        ->where('status', "available")
+        ->where('status', "available") 
         ->get();
         if (count($room) > 0) {
             return response()->json($room);
@@ -39,6 +39,16 @@ class RoomController extends Controller
         ->where('id', $request->id)->get();
         
         return response()->json($rent);
+        
+    }
+    public function makeAvailable(Request $request)
+    {
+        $room = Room :: where('id', $request->id)->first();
+        $room->status = "available";
+        $room->booked_for= NULL;
+        $room->save();
+        
+        return redirect()->back()->withErrors(['Available Now!']);
         
     }
 
@@ -55,6 +65,7 @@ class RoomController extends Controller
     public function create(Request $request)
     {
         
+        
         $room = new Room();
         $room->cetegory = $request->cetegory;
         $room->rent_per_day = $request->rent;
@@ -63,6 +74,17 @@ class RoomController extends Controller
     }
     public function bookings(Request $request)
     {
+        $validate = $request->validate([
+            "customer_id" => "required"
+            
+        ],
+         [
+            'customer_id.required'=>"Select all the fields",
+        
+        ] 
+         
+        ); 
+
          $room = Room::where('id', $request->room_id)->first();
          $room->status = "booked";
          $room->booked_for = $request->customer_id;

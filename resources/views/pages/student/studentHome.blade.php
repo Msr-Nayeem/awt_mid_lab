@@ -71,6 +71,9 @@
                         <h4 style="text-align:center;">{{$errors->first()}}</h4>
                         </div>
                     @endif
+                    @error('customer_id')
+                            <span class="text-danger">{{$message}}</span><br>
+                    @enderror
                  </div>
         </div>
             
