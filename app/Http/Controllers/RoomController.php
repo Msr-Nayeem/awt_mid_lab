@@ -21,7 +21,7 @@ class RoomController extends Controller
      */
     public function index()
     {
-        $room_datas = Room::paginate(4);
+        $room_datas = Room::paginate(5);
         return view('pages.customer.room', compact('room_datas'));
     }
     public function getRoom(Request $request)
