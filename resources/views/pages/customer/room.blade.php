@@ -26,8 +26,8 @@
         <h6 style="color: red;">{{$errors->first()}}</h6>
         </div>
     @endif
-    <table class="table table-bordered" style="cursor:default;">
-        <tr style="cursor:default;">
+    <table class="table table-bordered table-success border-dark table-striped table-hover" style="cursor:default;">
+        <tr class="table-warning border-dark">
             <th style="text-align: left">Room ID</th>
             <th>Category</th>
             <th>Status</th>

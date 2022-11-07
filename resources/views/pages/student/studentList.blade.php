@@ -34,8 +34,8 @@
         <h6 style="color: red;">{{$errors->first()}}</h6>
         </div>
     @endif
-    <table class="table table-bordered">
-        <tr style="cursor:default;">
+    <table class="table table-bordered table-success border-dark table-striped table-hover" style="cursor:default;">
+        <tr class="table-warning border-dark">
             <th style="text-align: left">Name</th>
             <th>Receptionist ID</th>
             <th colspan="2">Action</th>
@@ -44,7 +44,7 @@
         @foreach($students as $student)
         <tr>
             <td><a href="/details/{{$student->id}}">{{$student->name}}</a></td>
-            <td style="cursor:default;">{{$student->id}}</td>
+            <td>{{$student->id}}</td>
             <td><button  id="{{$student->name}}" name="edit" onclick="alertFunction(this)" class="btn btn-danger btn-sm" value="{{$student->id}}">EDIT</button></td>
             <td><button  id="{{$student->name}}" name="delete" onclick="alertFunction(this)" class="btn btn-danger btn-sm" value="{{$student->id}}">Delete</button></td>
         </tr>
