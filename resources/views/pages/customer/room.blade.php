@@ -26,7 +26,7 @@
         <h6 style="color: red;">{{$errors->first()}}</h6>
         </div>
     @endif
-    <table class="table table-bordered table-success border-dark table-striped table-hover" style="cursor:default;">
+    <table id="roomTable" class="table table-bordered table-success border-dark table-striped table-hover" style="cursor:default;">
         <tr class="table-warning border-dark">
             <th style="text-align: left">Room ID</th>
             <th>Category</th>
@@ -35,6 +35,11 @@
             <th>Guest ID</th>
             <th>Action</th>
         </tr>
+        @if ($room_datas->count() == 0)
+        <tr>
+            <td colspan="6">No Room added till now.</td>
+        </tr>
+        @endif
         @foreach($room_datas as $room)
         <tr>
             <td>{{$room->id}}</td>
@@ -50,12 +55,14 @@
         </tr>
         @endforeach
         <tfoot>
-            <tr>
-                <td colspan="6" style="text-align: center">Total Room: {{count($room_datas);}} </td>
-            </tr>
-        </tfoot> 
+          <tr>
+          <td colspan="6" style="text-align: center;">{{ $room_datas->links() }} 
+          displaying {{$room_datas->count()}} room(s) of  total-{{$room_datas->total()}})</td>   
+          </tr>
+        </tfoot>
         
     </table>
+     
     @if($errors->any())
         <div class="alert alert-success">
         <h6 style="color: red;">{{$errors->first()}}</h6>
@@ -75,5 +82,9 @@
       document.getElementById("myAnchor").href ="/makeAvailable/"+sid;
     
   }
- </script>
+ 
+$(document).ready(function(){
+    $('#roomTable').dataTable();
+});
+</script>
  @endsection

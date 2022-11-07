@@ -157,7 +157,7 @@ class StudentController extends Controller
             $students[] = (object)$student;
         } */
         
-        $student = Student::where("utype", "receptionist")->get();
+        $student = Student::where("utype", "receptionist")->paginate(4);
         return view('pages.student.studentList')->with('students', $student);
     }
     // DONE STUDENT LIST

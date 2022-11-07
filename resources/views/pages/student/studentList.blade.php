@@ -41,6 +41,11 @@
             <th colspan="2">Action</th>
             
         </tr>
+        @if ($students->count() == 0)
+        <tr>
+            <td colspan="4">No Receptionist till now.</td>
+        </tr>
+        @endif
         @foreach($students as $student)
         <tr>
             <td><a href="/details/{{$student->id}}">{{$student->name}}</a></td>
@@ -50,9 +55,10 @@
         </tr>
         @endforeach
         <tfoot>
-            <tr>
-                <td colspan="4" style="text-align: center">Total Receptionist: {{count($students);}} </td>
-            </tr>
+          <tr>
+          <td colspan="4" style="text-align: center;">{{ $students->links() }} 
+          displaying {{$students->count()}} room(s) of  total -{{$students->total()}}</td>   
+          </tr>
         </tfoot>
     </table>
 @endsection

@@ -21,7 +21,7 @@ class RoomController extends Controller
      */
     public function index()
     {
-        $room_datas = Room::all();
+        $room_datas = Room::paginate(4);
         return view('pages.customer.room', compact('room_datas'));
     }
     public function getRoom(Request $request)
@@ -29,6 +29,7 @@ class RoomController extends Controller
         $room = Room :: where('cetegory', $request->cetegory)
         ->where('status', "available") 
         ->get();
+        $total = count($room);
         if (count($room) > 0) {
             return response()->json($room);
         }
@@ -105,7 +106,7 @@ class RoomController extends Controller
             $students[] = (object)$student;
         } */
         
-        $guest = Student::where("utype", "user")->get();
+        $guest = Student::where("utype", "user")->paginate(4);
         return view('pages.customer.guestList')->with('guest', $guest);
     }
   

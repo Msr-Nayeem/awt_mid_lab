@@ -43,6 +43,11 @@
             <th colspan="2">Action</th>
             
         </tr>
+        @if ($guest->count() == 0)
+        <tr>
+            <td colspan="4">No Guest till now.</td>
+        </tr>
+        @endif
         @foreach($guest as $guests)
         <tr>
             <td><a href="/details/{{$guests->id}}">{{$guests->name}}</a></td>
@@ -52,9 +57,10 @@
         </tr>
         @endforeach
         <tfoot>
-            <tr>
-                <td colspan="4" style="text-align: center">Total Guest: {{count($guest);}} </td>
-            </tr>
+          <tr>
+          <td colspan="4" style="text-align: center;">{{ $guest->links() }} 
+          displaying {{$guest->count()}} guest(s) of  total-{{$guest->total()}})</td>   
+          </tr>
         </tfoot>
     </table>
 
