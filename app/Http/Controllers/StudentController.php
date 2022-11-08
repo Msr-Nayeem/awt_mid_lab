@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
+use App\Models\Customer;
 use App\Models\Student;
 use App\Models\District;
 use App\Models\City;
@@ -16,10 +17,11 @@ class StudentController extends Controller
 {
     
     public function home(){
-
-        $students = Student::where('id', session()->get('id'))->get();
-        
-        return view('pages.student.home', compact('students'));
+        $student = count(Student::where('utype', "admin")->get());
+        $customer = count(Student::where('utype', "receptionist")->get());
+        $guest = count(Student::where('utype', "user")->get());
+        $info = ["total admin"=>$student, " total receptionist"=>$customer, "total guest"=> $guest];
+        return view('pages.student.home', compact('info'));
     }
     public function booking(){
         
