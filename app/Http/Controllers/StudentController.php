@@ -75,7 +75,7 @@ class StudentController extends Controller
 
     public function studentLogout(){
         session()->flush();
-        return redirect()->route('studentLogin');
+        return redirect()->route('login');
     }
 
     // ADD STUDENT

@@ -10,7 +10,7 @@
             <div class="header">
             <h3>Welcome</h3>
             </div>
-            <form action="{{route('studentLogin')}}" class="form-group" method="post" autocomplete="off">
+            <form action="{{route('login')}}" class="form-group" method="post" autocomplete="off">
                 {{csrf_field()}}   
             <div>
                 <i class="fa fa-envelope" id="email" aria-hidden="true"></i>

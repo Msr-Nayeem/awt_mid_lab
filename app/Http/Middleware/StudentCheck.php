@@ -23,7 +23,7 @@ class StudentCheck
         else{
             $url = Route::current()->getName();
             $request->session()->put('url', $url);
-            return redirect()->route('studentLogin')->withErrors(['login must !']);
+            return redirect()->route('login')->withErrors(['login must !']);
         }
         
     }

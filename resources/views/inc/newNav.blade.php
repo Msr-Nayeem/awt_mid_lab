@@ -19,7 +19,7 @@
       </div>
       <div class="modal-footer">
         <a type="button" class="btn btn-secondary btn-sm" data-mdb-dismiss="modal">Cancel</a>
-        <a class="btn btn-danger btn-sm" type="button" href="{{route('studentLogout')}}"">Logout</a>
+        <a class="btn btn-danger btn-sm" type="button" href="{{route('logout')}}"">Logout</a>
       </div>
     </div>
   </div>

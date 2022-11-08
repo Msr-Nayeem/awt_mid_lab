@@ -22,7 +22,7 @@ Route::get('/index', function() {
 });
 
 Route::get('/profilee',[PagesController::class, 'profile'])->name('profile');
-Route::get('/login',[PagesController::class, 'loginPage'])->name('login');
+/* Route::get('/login',[PagesController::class, 'loginPage'])->name('login'); */
 
 
 Route::get('/hm',[PagesController::class, 'home'])->name('home');
@@ -57,10 +57,10 @@ Route::post('/studentUpdate',[StudentController::class, 'studentEditSubmitted'])
 
 Route::get('/studentDelete/{id}',[StudentController::class, 'studentDelete'])->name('studentDelete');
 
-Route::get('/studentLogin',[StudentController::class, 'studentLogin'])->name('studentLogin');
-Route::post('/studentLogin',[StudentController::class, 'studentLoginCheck'])->name('studentLogin');
+Route::get('/login',[StudentController::class, 'studentLogin'])->name('login');
+Route::post('/login',[StudentController::class, 'studentLoginCheck'])->name('login');
 
-Route::get('/studentLogout',[StudentController::class, 'studentLogout'])->name('studentLogout');
+Route::get('/logout',[StudentController::class, 'studentLogout'])->name('logout');
 
 Route::get('/profile}',[StudentController::class, 'profile'])->name('profile')->middleware('loginCheck');
 Route::get('/details/{id}',[StudentController::class, 'details'])->name('details');
