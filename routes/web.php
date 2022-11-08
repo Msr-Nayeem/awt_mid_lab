@@ -43,7 +43,7 @@ Route::get('/user/{id}', function($id) {
 //Student
 Route::get('/home',[StudentController::class, 'home'])->name('home')->middleware('loginCheck');
 
-Route::get('/receptionistList',[StudentController::class, 'studentList'])->name('studentList')->middleware('loginCheck');
+Route::get('/receptionistList',[StudentController::class, 'studentList'])->name('receptionistList')->middleware('loginCheck');
 
 
 Route::get('/createUser',[CustomerController::class, 'index'])->name('createUser');

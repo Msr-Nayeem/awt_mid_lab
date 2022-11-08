@@ -26,6 +26,16 @@
         <h6 style="color: red;">{{$errors->first()}}</h6>
         </div>
     @endif
+    <div class="d-flex justify-content-center">
+      <form class="from-control" action="{{route('room')}}"  method="get" autocomplete="off">  
+        
+        {{csrf_field()}}
+        <a type="button"  class="btn btn-danger btn-sm" href="{{route('room')}}">Refresh</a>
+        <input type="text"  name="search" style="background-color:cyan;" placeholder="search..."> 
+        <button type="submit" class="btn btn-danger btn-sm">Search </buton>
+        
+    </div>
+    <br>
     <table id="roomTable" class="table table-bordered table-success border-dark table-striped table-hover" style="cursor:default;">
         <tr class="table-warning border-dark">
             <th style="text-align: left">Room ID</th>

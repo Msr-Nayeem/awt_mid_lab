@@ -38,7 +38,7 @@
           <a class="btn btn-outline-success me-2" type="button" href="{{route('booking')}}">Booking</a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-outline-success me-2" type="button" href="{{route('studentList')}}">Receptionist List</a>
+          <a class="btn btn-outline-success me-2" type="button" href="{{route('receptionistList')}}">Receptionist List</a>
         </li>
         <li class="nav-item">
           <a class="btn btn-outline-success me-2" type="button" href="{{route('guestList')}}">Guest list</a>

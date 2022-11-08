@@ -34,29 +34,41 @@
         <h6 style="color: red;">{{$errors->first()}}</h6>
         </div>
     @endif
+   <div class="d-flex justify-content-center">
+   <form class="from-control" action="{{route('receptionistList')}}"  method="get"  autocomplete="off">  
+     
+     {{csrf_field()}}
+     <a type="button"  class="btn btn-danger btn-sm" href="{{route('receptionistList')}}">Refresh</a>
+     <input type="text"  name="search" style="background-color:cyan;" placeholder="search..."> 
+     <button type="submit" class="btn btn-danger btn-sm">Search </buton>
+     
+    </div>
+    <br>
     <table class="table table-bordered table-success border-dark table-striped table-hover" style="cursor:default;">
         <tr class="table-warning border-dark">
             <th style="text-align: left">Name</th>
             <th>Receptionist ID</th>
+            <th>Email</th>
             <th colspan="2">Action</th>
             
         </tr>
         @if ($students->count() == 0)
         <tr>
-            <td colspan="4">No Receptionist till now.</td>
+            <td colspan="5">No Receptionist till now.</td>
         </tr>
         @endif
         @foreach($students as $student)
         <tr>
             <td><a href="/details/{{$student->id}}">{{$student->name}}</a></td>
             <td>{{$student->id}}</td>
+            <td>{{$student->email}}</td>
             <td><button  id="{{$student->name}}" name="edit" onclick="alertFunction(this)" class="btn btn-danger btn-sm" value="{{$student->id}}">EDIT</button></td>
             <td><button  id="{{$student->name}}" name="delete" onclick="alertFunction(this)" class="btn btn-danger btn-sm" value="{{$student->id}}">Delete</button></td>
         </tr>
         @endforeach
         <tfoot>
           <tr>
-          <td colspan="4" style="text-align: center;">{{ $students->links() }} 
+          <td colspan="5" style="text-align: center;">{{ $students->links() }} 
           displaying {{$students->count()}} room(s) of  total -{{$students->total()}}</td>   
           </tr>
         </tfoot>

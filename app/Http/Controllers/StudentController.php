@@ -146,7 +146,7 @@ class StudentController extends Controller
 
 
     // SHOW STUDENT
-    public function studentList(){
+    public function studentList(Request $request){
         /* $student = array();
         for($i=1; $i<=10; $i++){
             $student = array(
@@ -156,8 +156,17 @@ class StudentController extends Controller
             );
             $students[] = (object)$student;
         } */
-        
-        $student = Student::where("utype", "receptionist")->paginate(4);
+        if(empty($request->search)){
+            $student = Student::where("utype", "receptionist")->paginate(4);
+        }
+        else{
+            $student = Student::where("utype", "receptionist")
+            ->where("name",'LIKE', '%'.$request->search.'%')
+            ->orWhere("email",'LIKE', '%'.$request->search.'%')
+            ->orWhere("id",'LIKE', '%'.$request->search.'%')
+            ->paginate(4);
+        }
+       
         return view('pages.student.studentList')->with('students', $student);
     }
     // DONE STUDENT LIST

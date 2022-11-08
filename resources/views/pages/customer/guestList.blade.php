@@ -36,29 +36,41 @@
         <h6 style="color: red;">{{$errors->first()}}</h6>
         </div>
     @endif
+    <div class="d-flex justify-content-center">
+      <form class="from-control" action="{{route('guestList')}}"  method="get" autocomplete="off">  
+        
+        {{csrf_field()}}
+        <a type="button"  class="btn btn-danger btn-sm" href="{{route('guestList')}}">Refresh</a>
+        <input type="text"  name="search" style="background-color:cyan;" placeholder="search..."> 
+        <button type="submit" class="btn btn-danger btn-sm">Search </buton>
+        
+    </div>
+    <br>
     <table class="table table-bordered table-success border-dark table-striped table-hover" style="cursor:default;">
         <tr class="table-warning border-dark">
             <th style="text-align: left">Name</th>
             <th>Guest ID</th>
+            <th>Email</th>
             <th colspan="2">Action</th>
             
         </tr>
         @if ($guest->count() == 0)
         <tr>
-            <td colspan="4">No Guest till now.</td>
+            <td colspan="5">No Guest till now.</td>
         </tr>
         @endif
         @foreach($guest as $guests)
         <tr>
             <td><a href="/details/{{$guests->id}}">{{$guests->name}}</a></td>
             <td>{{$guests->id}}</td>
+            <td>{{$guests->email}}Email</td>
             <td><button  id="{{$guests->name}}" name="edit" onclick="alertFunction(this)" class="btn btn-danger btn-sm" value="{{$guests->id}}">EDIT</button></td>
             <td><button  id="{{$guests->name}}" name="delete" onclick="alertFunction(this)" class="btn btn-danger btn-sm" value="{{$guests->id}}">Delete</button></td>
         </tr>
         @endforeach
         <tfoot>
           <tr>
-          <td colspan="4" style="text-align: center;">{{ $guest->links() }} 
+          <td colspan="5" style="text-align: center;">{{ $guest->links() }} 
           displaying {{$guest->count()}} guest(s) of  total-{{$guest->total()}})</td>   
           </tr>
         </tfoot>

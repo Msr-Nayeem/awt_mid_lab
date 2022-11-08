@@ -19,9 +19,19 @@ class RoomController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $room_datas = Room::paginate(5);
+        if(empty($request->search)){
+            $room_datas = Room::paginate(5);
+        }
+        else{
+            $room_datas = Room::where("cetegory",'LIKE', '%'.$request->search.'%')
+            ->orWhere("status",'LIKE', '%'.$request->search.'%')
+            ->orWhere("id",'LIKE', '%'.$request->search.'%')
+            ->orWhere("rent_per_day",'LIKE', '%'.$request->search.'%')
+            ->paginate(4);
+        }
+        
         return view('pages.customer.room', compact('room_datas'));
     }
     public function getRoom(Request $request)
@@ -95,7 +105,7 @@ class RoomController extends Controller
          return redirect()->back()->withErrors(['Bookings Done !']);
     }
 
-    public function guestList(){
+    public function guestList(Request $request){
         /* $student = array();
         for($i=1; $i<=10; $i++){
             $student = array(
@@ -105,8 +115,18 @@ class RoomController extends Controller
             );
             $students[] = (object)$student;
         } */
+
+        if(empty($request->search)){
+            $guest = Student::where("utype", "user")->paginate(4);
+        }
+        else{
+            $guest = Student::where("utype", "user")
+            ->where("name",'LIKE', '%'.$request->search.'%')
+            ->orWhere("email",'LIKE', '%'.$request->search.'%')
+            ->orWhere("id",'LIKE', '%'.$request->search.'%')
+            ->paginate(4);
+        }
         
-        $guest = Student::where("utype", "user")->paginate(4);
         return view('pages.customer.guestList')->with('guest', $guest);
     }
   
