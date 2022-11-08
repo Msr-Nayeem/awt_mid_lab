@@ -80,7 +80,7 @@ class StudentController extends Controller
     public function createStudent(){
         $cities = City::select('city_name','id')->get();
         $data['cities'] = $cities;
-        return view('pages.student.createStudent', $data);
+        return view('pages.student.createNew', $data);
     }
 
     public function getDistrict(Request $request)

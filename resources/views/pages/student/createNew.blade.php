@@ -2,7 +2,7 @@
 
 @section('content')
 
- <form action="{{route('createStudent')}}" class="form-group" method="post" autocomplete="off" style="cursor:default;">
+ <form action="{{route('createNew')}}" class="form-group" method="post" autocomplete="off" style="cursor:default;">
         {{csrf_field()}}
         <div class="col-md-5 border-right">
             <div class="p-3 py-5">

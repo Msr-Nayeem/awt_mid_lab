@@ -11,7 +11,7 @@
     <link href="{{asset('css/addRoom.css')}}" rel="stylesheet"/>
   
     <link rel="stylesheet" href="{{asset('css/createUser.css')}}">  
-
+    <script type="text/javascript" src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
     <title>Hotel Management</title>
     
     <style>
@@ -48,16 +48,15 @@
   <body class="p-3 m-0 border-0 bd-example" >
    @include('inc.newNav')
    <br><br>
+
+    <div class="container">
+      @yield('search')
+    </div>
     <div class="container">
       @yield('content')
     </div>
-    
-    <!-- MDB -->
-    
-    <!-- MDB -->
+  
     <script type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
-    
     @yield('scriptList')
   </body>
 </html>

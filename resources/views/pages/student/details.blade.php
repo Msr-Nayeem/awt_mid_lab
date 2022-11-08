@@ -30,10 +30,10 @@
                     </div>
 
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Student ID :</h6>
+                      <h6 class="mb-0">ID :</h6>
                     </div>
                     <div class="col-sm-3 text-secondary">
-                      <h6 class="mb-0">{{$student->student_id}}</h6>
+                      <h6 class="mb-0">{{$student->id}}</h6>
                     </div>
                   </div>
                   <hr>

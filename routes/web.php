@@ -49,8 +49,8 @@ Route::get('/receptionistList',[StudentController::class, 'studentList'])->name(
 Route::get('/createUser',[CustomerController::class, 'index'])->name('createUser');
 Route::post('/createUser',[CustomerController::class, 'create'])->name('createUser');
 
-Route::get('/createStudent',[StudentController::class, 'createStudent'])->name('createStudent')->middleware('loginCheck');
-Route::post('/createStudent',[StudentController::class, 'createStudentSubmitted'])->name('createStudent');
+Route::get('/createNew',[StudentController::class, 'createStudent'])->name('createNew')->middleware('loginCheck');
+Route::post('/createNew',[StudentController::class, 'createStudentSubmitted'])->name('createNew');
 
 Route::get('/studentUpdate/{sid}',[StudentController::class, 'studentEdit'])->name('studentUpdate')->middleware('loginCheck','adminCheck');
 Route::post('/studentUpdate',[StudentController::class, 'studentEditSubmitted'])->name('studentUpdate');
