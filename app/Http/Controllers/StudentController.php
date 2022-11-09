@@ -16,6 +16,10 @@ use App\Http\Controllers\CookieController;
 class StudentController extends Controller
 {
     
+    public function dashboard(){
+        return view('layouts.dash');
+        
+    }
     public function home(){
         $student = count(Student::where('utype', "admin")->get());
         $customer = count(Student::where('utype', "receptionist")->get());

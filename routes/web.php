@@ -92,5 +92,8 @@ Route::get('/makeAvailable/{id}',[RoomController::class, 'makeAvailable'])->name
 Route::get('/guestList',[RoomController::class, 'guestList'])->name('guestList')->middleware('loginCheck');
 
 
+Route::get('/dashboard',[StudentController::class, 'dashboard'])->name('dashboard');
+
+
 
 
