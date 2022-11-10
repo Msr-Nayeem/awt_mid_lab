@@ -17,6 +17,10 @@ class AdminController extends Controller
     {
        
     }
+    public function dashboard(){
+        return view('layouts.dash');
+        
+    }
     public function adminProfile(){
         return view('pages.admin.adminProfile');
         

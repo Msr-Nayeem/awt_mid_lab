@@ -1,4 +1,4 @@
-<?php
+<!-- ?php
 
 namespace App\Http\Controllers;
 
@@ -34,7 +34,7 @@ class StudentController extends Controller
         return view('pages.customer.booking')->with('students', $students);
     }
     public function studentLogin(){ 
-        return view('pages.student.login');
+        return view('pages.student.loginn');
     }
     public function studentLoginCheck(Request $request){
         $email = $request->email;
@@ -79,7 +79,7 @@ class StudentController extends Controller
 
     public function studentLogout(){
         session()->flush();
-        return redirect()->route('login');
+        return redirect()->route('loginn');
     }
 
     // ADD STUDENT
@@ -294,3 +294,4 @@ class StudentController extends Controller
     }
            
 }
+ -->

@@ -2,10 +2,13 @@
 
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StudentController;
+
+/* use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\RoomController;
+use App\Http\Controllers\RoomController; */
+
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +45,7 @@ Route::get('/user/{id}', function($id) {
 });
 
 //Student
+/* 
 Route::get('/home',[StudentController::class, 'home'])->name('home')->middleware('loginCheck');
 
 Route::get('/receptionistList',[StudentController::class, 'studentList'])->name('receptionistList')->middleware('loginCheck');
@@ -58,8 +62,8 @@ Route::post('/studentUpdate',[StudentController::class, 'studentEditSubmitted'])
 
 Route::get('/studentDelete/{id}',[StudentController::class, 'studentDelete'])->name('studentDelete');
 
-Route::get('/login',[StudentController::class, 'studentLogin'])->name('login');
-Route::post('/login',[StudentController::class, 'studentLoginCheck'])->name('login');
+Route::get('/loginn',[StudentController::class, 'studentLogin'])->name('loginn');
+Route::post('/loginn',[StudentController::class, 'studentLoginCheck'])->name('loginn');
 
 Route::get('/logoutt',[StudentController::class, 'studentLogout'])->name('logoutt');
 
@@ -92,11 +96,14 @@ Route::get('/makeAvailable/{id}',[RoomController::class, 'makeAvailable'])->name
 
 Route::get('/guestList',[RoomController::class, 'guestList'])->name('guestList')->middleware('loginCheck');
 
-
+ */
 //NEW ADDITION
-Route::get('/dashboard',[StudentController::class, 'dashboard'])->name('dashboard');
+Route::get('/dashboard',[AdminController::class, 'dashboard'])->name('dashboard');
 Route::get('/adminProfile',[AdminController::class, 'adminProfile'])->name('adminProfile');
 Route::get('/logout',[AdminController::class, 'logout'])->name('logout');
+
+Route::get('/login',[LoginController::class, 'Login'])->name('login');
+Route::post('/login',[LoginController::class, 'loginCheck'])->name('login');
 
 
 
