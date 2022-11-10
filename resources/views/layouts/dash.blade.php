@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="shortcut icon" href="{{ asset('hotel.ico') }}">
   <title>HOTEL_MANAGEMENT</title>
 
   <!-- Google Font: Source Sans Pro -->
@@ -34,7 +36,33 @@
             @include('inc.left-top')
 
 
+ <!-- Content Wrapper. Contains page content -->
+ <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container">
+       
+    </div>
+     
+
  
+    <!-- Main content -->
+    <div class="content">
+      <div class="container ml-0">
+        <!-- EVERYTHING WILL BE HERE -->
+
+
+
+
+        <!-- EVERYTHING WILL BE HERE -->
+      </div>
+    </div>
+    <!-- /.content -->
+
+<!-- /.content-wrapper -->
+
+
+
 <!-- jQuery -->
 <script src="{{ asset('admin_lte/plugins/jquery/jquery.min.js') }}"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -68,4 +96,5 @@
 <!-- AdminLTE for demo purposes -->
 
 </body>
+
 </html>
