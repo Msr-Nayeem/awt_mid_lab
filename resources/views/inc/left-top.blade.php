@@ -20,7 +20,7 @@
           />
     </a>
     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-        <a class="dropdown-item" href="{{route('profile')}}">Profile</a>
+        <a class="dropdown-item" href="{{route('adminProfile')}}">Profile</a>
         <a class="dropdown-item" type="button" data-mdb-toggle="modal" data-mdb-target="#staticBackdrop">Logout</a>
     </div>
   </li>
@@ -48,7 +48,7 @@
            >
         </div>
         <div class="info">
-          <a href="#" class="d-block">Admin Name</a>
+          <a href="{{route('adminProfile')}}" class="d-block">Admin Name</a>
         </div>
       </div>
 

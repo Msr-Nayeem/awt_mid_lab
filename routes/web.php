@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,7 +93,9 @@ Route::get('/makeAvailable/{id}',[RoomController::class, 'makeAvailable'])->name
 Route::get('/guestList',[RoomController::class, 'guestList'])->name('guestList')->middleware('loginCheck');
 
 
+//NEW ADDITION
 Route::get('/dashboard',[StudentController::class, 'dashboard'])->name('dashboard');
+Route::get('/adminProfile',[AdminController::class, 'adminProfile'])->name('adminProfile');
 
 
 
