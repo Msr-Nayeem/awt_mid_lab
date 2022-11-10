@@ -1,3 +1,31 @@
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-backdrop="static"
+  data-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Confirmation</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6>Do You want to logout?</h6>
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</a>
+        <a class="btn btn-danger btn-sm" type="button" href="{{route('logout')}}"">Logout</a>
+      </div>
+    </div>
+  </div>
+</div> 
+ 
+
  <!-- TOP Navbar -->
  <nav class="main-header navbar navbar-expand navbar-white navbar-light ml-6">
 
@@ -21,7 +49,7 @@
     </a>
     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
         <a class="dropdown-item" href="{{route('adminProfile')}}">Profile</a>
-        <a class="dropdown-item" type="button" data-mdb-toggle="modal" data-mdb-target="#staticBackdrop">Logout</a>
+        <a class="dropdown-item" type="button" data-toggle="modal" data-target="#staticBackdrop">Logout</a>
     </div>
   </li>
 </ul>

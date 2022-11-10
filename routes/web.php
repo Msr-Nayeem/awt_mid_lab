@@ -61,7 +61,7 @@ Route::get('/studentDelete/{id}',[StudentController::class, 'studentDelete'])->n
 Route::get('/login',[StudentController::class, 'studentLogin'])->name('login');
 Route::post('/login',[StudentController::class, 'studentLoginCheck'])->name('login');
 
-Route::get('/logout',[StudentController::class, 'studentLogout'])->name('logout');
+Route::get('/logoutt',[StudentController::class, 'studentLogout'])->name('logoutt');
 
 Route::get('/profile}',[StudentController::class, 'profile'])->name('profile')->middleware('loginCheck');
 Route::get('/details/{id}',[StudentController::class, 'details'])->name('details');
@@ -96,6 +96,7 @@ Route::get('/guestList',[RoomController::class, 'guestList'])->name('guestList')
 //NEW ADDITION
 Route::get('/dashboard',[StudentController::class, 'dashboard'])->name('dashboard');
 Route::get('/adminProfile',[AdminController::class, 'adminProfile'])->name('adminProfile');
+Route::get('/logout',[AdminController::class, 'logout'])->name('logout');
 
 
 

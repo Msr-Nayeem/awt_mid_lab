@@ -21,6 +21,10 @@ class AdminController extends Controller
         return view('pages.admin.adminProfile');
         
     }
+    public function logout(){
+        session()->flush();
+        return redirect()->route('login');
+    }
     /**
      * Show the form for creating a new resource.
      *
