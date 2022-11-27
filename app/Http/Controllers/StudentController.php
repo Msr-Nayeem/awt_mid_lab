@@ -298,6 +298,14 @@ class StudentController extends Controller
     public function APIList(){
         return Student :: select('name','id')->where('id',1)->get();
     }
+    public function APIpost(Request $req){
+        /* $student = new Student();
+        $student->name = $req->name;
+        $student->price = $req->price;
+        $student->image = $req->image;
+        $student->save(); */
+        return $req;
+    }
            
 }
  
