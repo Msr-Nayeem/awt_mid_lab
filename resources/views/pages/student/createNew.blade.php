@@ -23,7 +23,7 @@
                         <br>
 
                         <label for="">Password</label><br>
-                        <input type="password" name="password" class="form-control" value="{{old('password')}}" placeholder="Enter Password">
+                        <input type="password" class="form-control" name="password"  value="{{old('password')}}" placeholder="Enter Password">
                         @error('password')
                             <span class="text-danger">{{$message}}</span><br>
                         @enderror

@@ -3,9 +3,9 @@
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 
-/* use App\Http\Controllers\StudentController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\RoomController; */
+use App\Http\Controllers\RoomController; 
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
@@ -45,7 +45,7 @@ Route::get('/user/{id}', function($id) {
 });
 
 //Student
-/* 
+
 Route::get('/home',[StudentController::class, 'home'])->name('home')->middleware('loginCheck');
 
 Route::get('/receptionistList',[StudentController::class, 'studentList'])->name('receptionistList')->middleware('loginCheck');
@@ -96,7 +96,7 @@ Route::get('/makeAvailable/{id}',[RoomController::class, 'makeAvailable'])->name
 
 Route::get('/guestList',[RoomController::class, 'guestList'])->name('guestList')->middleware('loginCheck');
 
- */
+
 //NEW ADDITION
 Route::get('/dashboard',[AdminController::class, 'dashboard'])->name('dashboard');
 Route::get('/adminProfile',[AdminController::class, 'adminProfile'])->name('adminProfile');

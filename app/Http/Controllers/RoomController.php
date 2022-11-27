@@ -34,6 +34,9 @@ class RoomController extends Controller
         
         return view('pages.customer.room', compact('room_datas'));
     }
+    public function ApiList(){
+        return Student::all();
+    }
     public function getRoom(Request $request)
     {
         $room = Room :: where('cetegory', $request->cetegory)

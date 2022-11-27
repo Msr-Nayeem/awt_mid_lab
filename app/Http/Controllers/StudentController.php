@@ -1,4 +1,4 @@
-<!-- ?php
+<?php
 
 namespace App\Http\Controllers;
 
@@ -292,6 +292,12 @@ class StudentController extends Controller
         return redirect()->back()->with('passChanged','Password Changed Seccessfully');
 
     }
+
+
+    //API
+    public function APIList(){
+        return Student :: select('name','id')->where('id',1)->get();
+    }
            
 }
- -->
+ 
