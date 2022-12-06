@@ -5,6 +5,7 @@ namespace App\Http;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use App\Http\Middleware\StudentCheck;
 use App\Http\Middleware\adminCheck;
+use App\Http\Middleware\ApiAuth;
 
 
 class Kernel extends HttpKernel
@@ -67,6 +68,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'loginCheck' => studentCheck :: class,
-        'adminCheck' => adminCheck :: class
+        'adminCheck' => adminCheck :: class,
+        'ApiAuth' => ApiAuth :: class
     ];
 }

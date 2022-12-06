@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StudentController;
+use App\Http\Controllers\LoginAPIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +18,19 @@ use App\Http\Controllers\StudentController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/students/list',[StudentController::class,'APIList']);
-Route::post('/students/list',[StudentController::class,'APIpost']);
+Route::get('/students/list',[LoginAPIController::class,'APIList'])->middleware('ApiAuth');
+
+Route::post('/students/list',[LoginAPIController::class,'APIpost']);
+
+//REGISTRATION
+Route::post('/apiRegistration',[LoginAPIController::class,'apiRegistration']); 
+
+//LOGIN
+Route::post('/apiLogin',[LoginAPIController::class,'apiLogin']); 
+
+
+//LOGOUT
+Route::post('/apiLogout',[LoginAPIController::class,'apiLogout']); 
+
+
 

@@ -296,8 +296,9 @@ class StudentController extends Controller
 
     //API
     public function APIList(){
-        return Student :: select('name','id')->where('id',1)->get();
+        return Student :: select('name','id')->get();
     }
+
     public function APIpost(Request $req){
         /* $student = new Student();
         $student->name = $req->name;
@@ -305,6 +306,16 @@ class StudentController extends Controller
         $student->image = $req->image;
         $student->save(); */
         return $req;
+    }
+    public function  apiLogin(Request $req){
+
+        $user = Student::where('email',$req->email)->where('password',$req->password)->first();
+        
+        if($user){
+            return $user;
+        }
+        return null;
+
     }
            
 }
