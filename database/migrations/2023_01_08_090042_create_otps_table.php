@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('admins', function (Blueprint $table) {
-            $table->integer('main_id',11);
-            $table->string('name',100);
-            $table->string('email',100)->unique();
-            $table->string('password');
+        Schema::create('otps', function (Blueprint $table) {
+            $table->id();
+            $table->string('user_email',100);
+            $table->string('otp_no',6);
+            $table->string('token_no',32);
             $table->timestamps();
         });
+        
     }
 
     /**
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('otps');
     }
 };

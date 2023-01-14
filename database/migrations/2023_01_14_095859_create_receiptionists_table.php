@@ -13,12 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('admins', function (Blueprint $table) {
-            $table->integer('main_id',11);
-            $table->string('name',100);
-            $table->string('email',100)->unique();
+        Schema::create('receiptionists', function (Blueprint $table) {
+            $table->increments('main_id')->primary();
+            $table->string('name', 100);
+            $table->string('email')->unique();
             $table->string('password');
-            $table->timestamps();
+            $table->integer('country_id', 2);
+            $table->integer('city_id', 2);
+            $table->integer('district_id', 2);
+            $table->integer('area_id', 2);
         });
     }
 
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('receiptionists');
     }
 };
